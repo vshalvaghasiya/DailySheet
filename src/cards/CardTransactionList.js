@@ -24,29 +24,43 @@ class CardTransactionList extends Component {
                         <Left>
                             <Thumbnail source={{ uri: 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png' }} />
                             <Body>
-                                <Text>NativeBase</Text>
-                                <Text note>GeekyAnts</Text>
+                                <Text>Title</Text>
+                                <Text note>Description</Text>
                             </Body>
                         </Left>
+                        <Right>
+                            <Button transparent>
+                                <Icon active
+                                    type='FontAwesome'
+                                    name="edit"
+                                    style={{ color: 'black' }} />
+                            </Button>
+                        </Right>
                     </CardItem>
-                    <CardItem cardBody>
-                        <Image source={{ uri: 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png' }} style={{ height: 200, width: null, flex: 1 }} />
-                    </CardItem>
+                    
                     <CardItem>
                         <Left>
                             <Button transparent>
-                                <Icon active name="thumbs-up" />
-                                <Text>12 Likes</Text>
+                                <Icon active
+                                    type='MaterialCommunityIcons'
+                                    name="currency-inr"
+                                    style={{ color: 'black' }} />
+                                <Text>10.0</Text>
                             </Button>
                         </Left>
                         <Body>
                             <Button transparent>
-                                <Icon active name="chatbubbles" />
-                                <Text>4 Comments</Text>
+                                <Text>1 Jan, 2019</Text>
                             </Button>
                         </Body>
                         <Right>
-                            <Text>11h ago</Text>
+                            <Button transparent>
+                                <Icon active
+                                    type='FontAwesome5'
+                                    name="file-pdf"
+                                    style={{ color: 'black' }} />
+                                <Text>  View PDF</Text>
+                            </Button>
                         </Right>
                     </CardItem>
                 </Card>
