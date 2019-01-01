@@ -14,7 +14,7 @@ export default class App extends Component{
   
   componentDidMount() {
     Parse.setAsyncStorage(AsyncStorage);
-    Parse.initialize("WAKZzbKAkOgVdO86ttzuoi549JlJXC87ZOhhEtmH", "3g17iy7ZNwkpxsmQVauPDrKjby5RoIzam2FH3H3u"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+    Parse.initialize("eOiFaquGETkC2WWkhxnhTqIS1xSZo75ckAJcVnFj", "4ZhGqJkHYCOgWAZDESEgrrdskGkR9Gque7PFXrnC"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
     Parse.serverURL = 'https://parseapi.back4app.com/'
   }
 
