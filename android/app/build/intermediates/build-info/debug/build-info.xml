@@ -6,7 +6,7 @@
     density="hdpi"
     format="10"
     plugin-version="3.2.1"
-    timestamp="1546320790853"
+    timestamp="1546321814734"
     token="2351975690471081442"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -73,7 +73,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1546320790853"
+        timestamp="1546321814734"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/instant-run-apk/debug/app-debug.apk"

@@ -6,23 +6,50 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, AsyncStorage} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View, AsyncStorage, StatusBar } from 'react-native';
+import { Root } from 'native-base';
 import Parse from 'parse/react-native';
 
-export default class App extends Component{
-  
+import Navigator from './src/action/Navigator';
+export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      isConnected: true,
+    };
+  }
+
   componentDidMount() {
     Parse.setAsyncStorage(AsyncStorage);
     Parse.initialize("eOiFaquGETkC2WWkhxnhTqIS1xSZo75ckAJcVnFj", "4ZhGqJkHYCOgWAZDESEgrrdskGkR9Gque7PFXrnC"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
     Parse.serverURL = 'https://parseapi.back4app.com/'
   }
 
+  spinerRender() {
+    if (this.state.isConnected) {
+      return (
+        <View style={{ flex: 1 }}>
+          <Navigator />
+        </View>
+      );
+    }
+    return (
+      <NoInternet checkConnection={this.checkConnection} />
+    );
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-      </View>
+      <Root style={styles.container}>
+        <StatusBar
+          backgroundColor="#ffffff"
+          barStyle="dark-content"
+        />
+        {this.spinerRender()}
+      </Root>
     );
   }
 }
@@ -34,10 +61,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-
 });
