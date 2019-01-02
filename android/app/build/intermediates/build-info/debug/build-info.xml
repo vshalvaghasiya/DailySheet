@@ -2,13 +2,13 @@
 <instant-run
     abi="x86"
     api-level="27"
-    build-mode="COLD"
+    build-mode="FULL"
     density="hdpi"
     format="10"
     plugin-version="3.2.1"
-    timestamp="1546321814734"
+    timestamp="1546431193997"
     token="2351975690471081442"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
@@ -26,16 +26,52 @@
     <artifact
         location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
         type="SPLIT_MAIN" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1546319330542"
+        timestamp="1546431193997"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
-            type="SPLIT" />
+            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
-            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
             location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
@@ -44,40 +80,32 @@
             location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
             location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
             location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
-            type="SPLIT" />
-        <artifact
             location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1546321814734"
-        verifier="COLD_SWAP_REQUESTED" >
+            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+            type="SPLIT" />
         <artifact
-            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
+            location="/Users/admin/Desktop/DailySheet/android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

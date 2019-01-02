@@ -5,9 +5,6 @@ class CardTransactionList extends Component {
 
     render() {
         // const { handleCancel, handleAccept, handleAccept1, seconds, index } = this.props;
-        const { Title, Description, Price, BILL, StoreName, BillDate } = this.props.items;
-        console.log('Success',this.props.index );
-
         return (
             <Content>
                 <Card>
@@ -15,8 +12,8 @@ class CardTransactionList extends Component {
                         <Left>
                             <Thumbnail source={{ uri: 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png' }} />
                             <Body>
-                                <Text>{this.props.index}</Text>
-                                <Text note>{Description}</Text>
+                                <Text>{this.props.items.get('Title')}</Text>
+                                <Text note>{this.props.items.get('Description')}</Text>
                             </Body>
                         </Left>
                         <Right>
@@ -36,12 +33,12 @@ class CardTransactionList extends Component {
                                     type='MaterialCommunityIcons'
                                     name="currency-inr"
                                     style={{ color: 'black' }} />
-                                <Text>10.0</Text>
+                                <Text>{this.props.items.get('Price')}</Text>
                             </Button>
                         </Left>
                         <Body>
                             <Button transparent>
-                                <Text>1 Jan, 2019</Text>
+                                <Text>{this.props.items.get('BillDate')}</Text>
                             </Button>
                         </Body>
                         <Right>
@@ -50,7 +47,7 @@ class CardTransactionList extends Component {
                                     type='FontAwesome5'
                                     name="file-pdf"
                                     style={{ color: 'black' }} />
-                                <Text>  View PDF</Text>
+                                <Text>View PDF</Text>
                             </Button>
                         </Right>
                     </CardItem>

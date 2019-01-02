@@ -45,12 +45,11 @@ class Dashboard extends Component {
         if (this.state.data && this.state.data.length > 0) {
             console.log(this.state.data);
             return this.state.data.map((item, index) =>
-            console.log('Success123', item.jsob),
-                // <CardTransaction
-                //     key={`index-${index}`}
-                //     items={item}
-                //     index={index}
-                // />
+                <CardTransaction
+                    key={`index-${index}`}
+                    items={item}
+                    index={index}
+                />
             );
         }
         return (
