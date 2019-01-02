@@ -12,6 +12,7 @@ import { Root } from 'native-base';
 import Parse from 'parse/react-native';
 
 import Navigator from './src/action/Navigator';
+import { APPID, JavaScriptKey } from './src/helper/Constant';
 export default class App extends Component {
 
   constructor(props) {
@@ -22,9 +23,9 @@ export default class App extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount(){
     Parse.setAsyncStorage(AsyncStorage);
-    Parse.initialize("eOiFaquGETkC2WWkhxnhTqIS1xSZo75ckAJcVnFj", "4ZhGqJkHYCOgWAZDESEgrrdskGkR9Gque7PFXrnC"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+    Parse.initialize(APPID, JavaScriptKey); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
     Parse.serverURL = 'https://parseapi.back4app.com/'
   }
 

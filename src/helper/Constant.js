@@ -1,2 +1,2 @@
-export const BASE_URL = 'https://parsefiles.back4app.com/';
-export const APPID = '0J2vIUiuJAxTQ3A6f81YwwaGaT3uk8berYBgGB1t';
+export const APPID = 'eOiFaquGETkC2WWkhxnhTqIS1xSZo75ckAJcVnFj';
+export const JavaScriptKey = '4ZhGqJkHYCOgWAZDESEgrrdskGkR9Gque7PFXrnC';
