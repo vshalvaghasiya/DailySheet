@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Dashboard from '../pages/Dashboard';
+import ViewPDF from '../pages/ViewPDF';
 
 const Navigator = (props) => {
     return (
@@ -24,6 +25,10 @@ const Navigator = (props) => {
                     type='reset'
                     key="dashboard"
                     component={Dashboard} hideNavBar={'true'}
+                />
+                <Scene
+                    key="viewPDF"
+                    component={ViewPDF} hideNavBar={'true'}
                 />
             </Scene>
         </Router>

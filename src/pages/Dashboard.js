@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, View, ScrollView, Text, AsyncStorage } from 'react-native';
-import { Container, Header, Title, Content, Card, Thumbnail, CardItem, Drawer, Button, Fab, Body, Icon, Left, Right } from 'native-base';
+import { Platform, View, ScrollView, Text, Alert } from 'react-native';
+import { Container, Header, Title, 
+     Drawer, Button, Fab, Body, Icon, Left, Right } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
 import Moment from 'moment';
@@ -15,6 +16,7 @@ class Dashboard extends Component {
             active: false,
             data: []
         };
+        this._ViewPDF = this._ViewPDF.bind(this);
     }
 
     componentDidMount() {
@@ -24,10 +26,10 @@ class Dashboard extends Component {
     GetTransaction() {
         // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
         const NewsObject = Parse.Object.extend('DailyReport');
-        const NewsQuery = new Parse.Query(NewsObject);
-        // NewsQuery.equalTo("District", this.state.City);
-        // NewsQuery.equalTo("UploadDate", curruntDate);
-        NewsQuery.find().then((results) => {
+        const query = new Parse.Query(NewsObject);
+        query.descending('BillDate');
+        query.limit = 1000;
+        query.find().then((results) => {
             this.setState({ data: results });
         }, (error) => {
             console.error(error);
@@ -41,6 +43,14 @@ class Dashboard extends Component {
         this.drawer._root.open()
     };
 
+    _ViewPDF(PDF) {
+        if (!!PDF) {
+            Actions.viewPDF({ PDF: PDF._url });
+        } else {
+            Alert.alert('Message..!', 'Bill not found');
+        }
+    }
+
     renderTransactionList() {
         if (this.state.data && this.state.data.length > 0) {
             console.log(this.state.data);
@@ -49,6 +59,7 @@ class Dashboard extends Component {
                     key={`index-${index}`}
                     items={item}
                     index={index}
+                    _ViewPDF={this._ViewPDF}
                 />
             );
         }

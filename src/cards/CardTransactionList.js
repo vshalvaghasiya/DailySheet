@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Content, Card, CardItem, Thumbnail, Button, Body, Icon, Left, Right } from 'native-base';
-import { View, Text, Image } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 class CardTransactionList extends Component {
 
     render() {
         // const { handleCancel, handleAccept, handleAccept1, seconds, index } = this.props;
+        // const { ViewPDF } = this.props;
         return (
             <Content>
                 <Card>
@@ -42,12 +43,12 @@ class CardTransactionList extends Component {
                             </Button>
                         </Body>
                         <Right>
-                            <Button transparent>
+                            <Button transparent onPress={() => this.props._ViewPDF(this.props.items.get('BILL'))} >
                                 <Icon active
                                     type='FontAwesome5'
                                     name="file-pdf"
                                     style={{ color: 'black' }} />
-                                <Text>View PDF</Text>
+                                <Text>  View BILL</Text>
                             </Button>
                         </Right>
                     </CardItem>
