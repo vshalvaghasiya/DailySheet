@@ -1,32 +1,26 @@
 import React, { Component } from 'react';
-import { Container, Content, Card, CardItem, Thumbnail, Button, Body, Icon, Left, Right } from 'native-base';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { Content, Card, CardItem, Button, Body, Icon, Left, Right } from 'native-base';
+import { View, Text } from 'react-native';
 class CardTransactionList extends Component {
 
     render() {
-        // const { handleCancel, handleAccept, handleAccept1, seconds, index } = this.props;
-        // const { ViewPDF } = this.props;
         return (
             <Content>
                 <Card>
                     <CardItem>
-                        <Left>
-                            <Thumbnail source={{ uri: 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png' }} />
-                            <Body>
-                                <Text>{this.props.items.get('Title')}</Text>
-                                <Text note>{this.props.items.get('Description')}</Text>
-                            </Body>
-                        </Left>
-                        <Right>
-                            <Button transparent>
-                                <Icon active
-                                    type='FontAwesome'
-                                    name="edit"
-                                    style={{ color: 'black' }} />
-                            </Button>
-                        </Right>
+                        <View style={{ width: 20 }} />
+                        <Body>
+                            <Text style={{ fontWeight: 'bold' }}>{this.props.items.get('Title')}</Text>
+                            <Text note>{this.props.items.get('Description')}</Text>
+                        </Body>
+                        <Button transparent>
+                            <Icon active
+                                type='FontAwesome'
+                                name="edit"
+                                style={{ color: 'black' }} />
+                        </Button>
                     </CardItem>
-                    
+
                     <CardItem>
                         <Left>
                             <Button transparent>
