@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Dashboard from '../pages/Dashboard';
 import ViewPDF from '../pages/ViewPDF';
-
+import CreateTransaction from '../pages/CreateTransaction';
 const Navigator = (props) => {
     return (
         <Router
@@ -23,6 +23,11 @@ const Navigator = (props) => {
             <Scene key="root">
                 <Scene
                     type='reset'
+                    key="createTransaction"
+                    component={CreateTransaction} hideNavBar={'true'}
+                />
+                <Scene
+
                     key="dashboard"
                     component={Dashboard} hideNavBar={'true'}
                 />
@@ -30,6 +35,7 @@ const Navigator = (props) => {
                     key="viewPDF"
                     component={ViewPDF} hideNavBar={'true'}
                 />
+
             </Scene>
         </Router>
     );

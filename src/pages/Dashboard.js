@@ -48,6 +48,7 @@ class Dashboard extends Component {
             Actions.viewPDF({ PDF: PDF._url });
         } else {
             Alert.alert('Message..!', 'Bill not found');
+            
         }
     }
 
@@ -91,20 +92,6 @@ class Dashboard extends Component {
                         <Right />
                     </Header>
 
-                    {/* <View style={{ backgroundColor: 'red', height: 50, width: '100%' }}>
-                        <Content>
-                            <Card>
-                                <CardItem>
-                                    <Body>
-                                        <Text>
-                                            Your text here
-                                    </Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                        </Content>
-                    </View> */}
-
                     <ScrollView style={margin}>
                         {this.renderTransactionList()}
                     </ScrollView>
@@ -115,11 +102,10 @@ class Dashboard extends Component {
                             containerStyle={{}}
                             style={{ backgroundColor: '#5067FF' }}
                             position="bottomRight"
-                            onPress={() => this.setState({ active: !this.state.active })}>
+                            onPress={() => Actions.createTransaction() }>
                             <Icon
                                 type='Entypo'
                                 name="plus" />
-
                         </Fab>
                     </View>
 
