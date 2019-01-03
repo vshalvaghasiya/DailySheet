@@ -21,19 +21,19 @@ const Navigator = (props) => {
             }}
         >
             <Scene key="root">
+
                 <Scene
                     type='reset'
-                    key="createTransaction"
-                    component={CreateTransaction} hideNavBar={'true'}
-                />
-                <Scene
-
                     key="dashboard"
                     component={Dashboard} hideNavBar={'true'}
                 />
                 <Scene
                     key="viewPDF"
                     component={ViewPDF} hideNavBar={'true'}
+                />
+                <Scene
+                    key="createTransaction"
+                    component={CreateTransaction} hideNavBar={'true'}
                 />
 
             </Scene>

@@ -4,8 +4,11 @@ ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.
 INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-28:12
 MERGED from [com.facebook.react:react-native:0.56.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/react-native-0.56.0.aar/4294e5b918916a78fabbf599b1b93bb3/AndroidManifest.xml:2:1-15:12
+MERGED from [com.github.yalantis:ucrop:2.2.2-native] /Users/admin/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.2-native.aar/c295fc5f909fbb3dd873bfb028c07074/AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/admin/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/505c0bbf70d9e526b559465285eb49c7/AndroidManifest.xml:17:1-22:12
+MERGED from [id.zelory:compressor:2.1.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/compressor-2.1.0.aar/8b78523eec94381fa6b78f2be5013e16/AndroidManifest.xml:2:1-12:12
 MERGED from [com.android.support:support-fragment:27.1.1] /Users/admin/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/ee2b7f97b6c1f88d61edfa6a9896b349/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/admin/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/035062443998bef1f64203a1404e339e/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:27.1.1] /Users/admin/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/e073004e3b3884318c103ea5ac4fe774/AndroidManifest.xml:17:1-22:12
@@ -54,6 +57,8 @@ MERGED from [com.facebook.react:react-native:0.56.0] /Users/admin/.gradle/caches
 		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:5:22-75
 application
 ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:7:5-24:19
+MERGED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:12:5-26:19
+MERGED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:12:5-26:19
 MERGED from [com.facebook.react:react-native:0.56.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/react-native-0.56.0.aar/4294e5b918916a78fabbf599b1b93bb3/AndroidManifest.xml:13:5-20
 MERGED from [com.facebook.react:react-native:0.56.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/react-native-0.56.0.aar/4294e5b918916a78fabbf599b1b93bb3/AndroidManifest.xml:13:5-20
 MERGED from [com.facebook.soloader:soloader:0.3.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/soloader-0.3.0.aar/8961205679928d0ad9a9f4bbda2454ec/AndroidManifest.xml:11:5-20
@@ -98,10 +103,16 @@ uses-sdk
 INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:6:5-8:41
+MERGED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:6:5-8:41
 MERGED from [com.facebook.react:react-native:0.56.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/react-native-0.56.0.aar/4294e5b918916a78fabbf599b1b93bb3/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.56.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/react-native-0.56.0.aar/4294e5b918916a78fabbf599b1b93bb3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.yalantis:ucrop:2.2.2-native] /Users/admin/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.2-native.aar/c295fc5f909fbb3dd873bfb028c07074/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.yalantis:ucrop:2.2.2-native] /Users/admin/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.2-native.aar/c295fc5f909fbb3dd873bfb028c07074/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/admin/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/505c0bbf70d9e526b559465285eb49c7/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/admin/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/505c0bbf70d9e526b559465285eb49c7/AndroidManifest.xml:20:5-44
+MERGED from [id.zelory:compressor:2.1.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/compressor-2.1.0.aar/8b78523eec94381fa6b78f2be5013e16/AndroidManifest.xml:8:5-10:41
+MERGED from [id.zelory:compressor:2.1.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/compressor-2.1.0.aar/8b78523eec94381fa6b78f2be5013e16/AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:support-fragment:27.1.1] /Users/admin/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/ee2b7f97b6c1f88d61edfa6a9896b349/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.1.1] /Users/admin/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/ee2b7f97b6c1f88d61edfa6a9896b349/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/admin/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/035062443998bef1f64203a1404e339e/AndroidManifest.xml:20:5-44
@@ -149,7 +160,31 @@ INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManife
 		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-IMPLIED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:10:22-78
+provider#android.support.v4.content.FileProvider
+ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:13:9-21:20
+	android:grantUriPermissions
+		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:17:13-47
+	android:authorities
+		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:15:13-60
+	android:exported
+		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:16:13-37
+	android:name
+		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:14:13-67
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:18:13-20:58
+	android:resource
+		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:20:17-55
+	android:name
+		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:19:17-67
+activity#com.yalantis.ucrop.UCropActivity
+ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:23:9-25:72
+	android:theme
+		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:25:13-69
+	android:name
+		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:24:13-60
 uses-permission#android.permission.READ_PHONE_STATE
 IMPLIED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
