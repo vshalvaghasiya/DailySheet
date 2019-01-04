@@ -11,7 +11,7 @@ import { Spinner } from '../common/Spinner';
 
 import CardTransaction from '../cards/CardTransactionList';
 import SideBar from '../Drawer/SideBar';
-class Dashboard extends Component {
+class YearlyReport extends Component {
 
     constructor(props) {
         super(props);
@@ -105,7 +105,7 @@ class Dashboard extends Component {
                             </Button>
                         </Left>
                         <Body>
-                            <Title>Dashboard</Title>
+                            <Title>Yearly Report</Title>
                         </Body>
                         <Right />
                     </Header>
@@ -139,4 +139,4 @@ const styles = {
     }
 };
 
-export default Dashboard;
+export default YearlyReport;
