@@ -65,39 +65,91 @@ class EditTransaction extends Component {
 
     updateTransaction() {
         this.setState({ loading: true });
-        // const object = Parse.Object.extend("DailyReport");
-        // const objects = new object();
-
         var file = undefined
         if (!!this.state.image) {
-            var base64 = this.state.image;
+            var base64 = this.state.image.uri;
             file = new Parse.File("bill", { base64: base64 });
         }
-        let data = this.props.data;
-        var query = new Parse.Query('DailyReport');
-        query.find(data.id, {
-            success: function (objects) {
-                objects.set("UserID", '1');
-                objects.set("Title", this.state.Title);
-                objects.set("Price", this.state.Price);
-                objects.set("StoreName", this.state.StoreName)
-                objects.set("BillDate", this.state.chosenDate.toString().substr(4, 12))
-                objects.set("Description", this.state.Description)
-                objects.set("BILL", file)
-                objects.save()
-                    .then((result) => {
-                        this.setState({ loading: false });
-                        Actions.dashboard();
-                    }, (error) => {
-                        this.setState({ loading: false });
-                        alert('Failed to create new object, with error code: ' + error.message);
-                    });
-            },
 
-            error: function (error) {
-                // error is an instance of Parse.Error.
-            }
+        let data = this.props.data;
+        var GameScore = Parse.Object.extend("DailyReport");
+        // var gameScore = new GameScore();
+        const gameScore = new Parse.Query(GameScore);
+        gameScore.equalTo("objectId", data.id);
+        gameScore.find().then((results) => {
+            results.set("UserID", '1');
+            results.set("Title", this.state.Title);
+            results.set("Price", this.state.Price);
+            results.set("StoreName", this.state.StoreName)
+            results.set("BillDate", this.state.chosenDate.toString().substr(4, 12))
+            results.set("Description", this.state.Description)
+            results.set("BILL", file)
+            results.save()
+                .then((result) => {
+                    this.setState({ loading: false });
+                    Actions.dashboard();
+                }, (error) => {
+                    this.setState({ loading: false });
+                    alert('Failed to create new object, with error code: ' + error.message);
+                });
+        }, (error) => {
+            this.setState({ loading: false });
+            console.error(error);
         });
+
+
+        // let data = this.props.data;
+        // alert(data.id);
+        // const NewsObject = Parse.Object.extend('DailyReport');
+        // const query = new Parse.Query(NewsObject);
+        // query.equalTo("objectId", data.id);
+        // query.find().then((objects) => {
+        //     objects.set("UserID", '1');
+        //     objects.set("Title", this.state.Title);
+        //     objects.set("Price", this.state.Price);
+        //     objects.set("StoreName", this.state.StoreName)
+        //     objects.set("BillDate", this.state.chosenDate.toString().substr(4, 12))
+        //     objects.set("Description", this.state.Description)
+        //     objects.set("BILL", file)
+        //     objects.save()
+        //         .then((result) => {
+        //             this.setState({ loading: false });
+        //             Actions.dashboard();
+        //         }, (error) => {
+        //             this.setState({ loading: false });
+        //             alert('Failed to create new object, with error code: ' + error.message);
+        //         });
+        // }, (error) => {
+        //     this.setState({ loading: false });
+        //     console.error(error);
+        // });
+
+        // var query = new Parse.Query('DailyReport');
+
+        // query.first({
+        //     success: function (objects) {
+
+        // objects.set("UserID", '1');
+        // objects.set("Title", this.state.Title);
+        // objects.set("Price", this.state.Price);
+        // objects.set("StoreName", this.state.StoreName)
+        // objects.set("BillDate", this.state.chosenDate.toString().substr(4, 12))
+        // objects.set("Description", this.state.Description)
+        // objects.set("BILL", file)
+        // objects.save()
+        //     .then((result) => {
+        //         this.setState({ loading: false });
+        //         Actions.dashboard();
+        //     }, (error) => {
+        //         this.setState({ loading: false });
+        //         alert('Failed to create new object, with error code: ' + error.message);
+        //     });
+        //     },
+        //     error: function (error) {
+        //         this.setState({ loading: false });
+        //         alert('Failed to create new object, with error code: ' + error.message);
+        //     }
+        // });
     }
 
     openDialog() {

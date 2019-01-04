@@ -3,11 +3,13 @@ import { Platform } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Dashboard from '../pages/Dashboard';
 import ViewPDF from '../pages/ViewPDF';
-import Cashback from '../pages/Cashback';
 import MonthlyReport from '../pages/MonthlyReport';
 import YearlyReport from '../pages/YearlyReport';
 import CreateTransaction from '../pages/CreateTransaction';
 import EditTransaction from '../pages/EditTransaction';
+
+import Cashback from '../pages/Cashback';
+import CreateCashBack from '../pages/CreateCashBack';
 
 const Navigator = (props) => {
     return (
@@ -55,6 +57,11 @@ const Navigator = (props) => {
                 <Scene
                     key="editTransaction"
                     component={EditTransaction} hideNavBar={'true'}
+                />
+
+                <Scene
+                    key="createcashback"
+                    component={CreateCashBack} hideNavBar={'true'}
                 />
 
             </Scene>

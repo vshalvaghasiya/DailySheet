@@ -9,7 +9,7 @@ import Parse from 'parse/react-native';
 import Moment from 'moment';
 import { Spinner } from '../common/Spinner';
 
-import CardTransaction from '../cards/CardTransactionList';
+import CardCashbackList from '../cards/CardCashbackList';
 import SideBar from '../Drawer/SideBar';
 class Cashback extends Component {
 
@@ -30,9 +30,9 @@ class Cashback extends Component {
     GetTransaction() {
         this.setState({ loading: true });
         // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
-        const NewsObject = Parse.Object.extend('DailyReport');
+        const NewsObject = Parse.Object.extend('Cashback');
         const query = new Parse.Query(NewsObject);
-        query.descending('BillDate');
+        query.descending('CashbackDate');
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });
@@ -59,7 +59,7 @@ class Cashback extends Component {
         }
     }
 
-    renderTransactionList() {
+    renderCashbackList() {
         if (this.state.loading) {
             return (
                 <View style={styles.center3}>
@@ -71,7 +71,7 @@ class Cashback extends Component {
         if (this.state.data && this.state.data.length > 0) {
             console.log(this.state.data);
             return this.state.data.map((item, index) =>
-                <CardTransaction
+                <CardCashbackList
                     key={`index-${index}`}
                     items={item}
                     index={index}
@@ -111,7 +111,7 @@ class Cashback extends Component {
                     </Header>
 
                     <ScrollView style={margin}>
-                        {this.renderTransactionList()}
+                        {this.renderCashbackList()}
                     </ScrollView>
                     <View style={{ width: 50, height: 50, position: 'absolute', right: 0, bottom: 20, justifyContent: 'center', alignItems: 'center' }}>
                         <Fab
@@ -120,7 +120,7 @@ class Cashback extends Component {
                             containerStyle={{}}
                             style={{ backgroundColor: '#5067FF' }}
                             position="bottomRight"
-                            onPress={() => Actions.createTransaction()}>
+                            onPress={() => Actions.createcashback()}>
                             <Icon
                                 type='Entypo'
                                 name="plus" />

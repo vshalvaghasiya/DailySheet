@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Jan 03 14:49:08 IST 2019
+#Fri Jan 04 11:51:57 IST 2019
 5.base=/Users/admin/Desktop/DailySheet/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
 42.base=/Users/admin/Desktop/DailySheet/android/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out
 22.path=fonts/FontAwesome5_Regular.ttf
@@ -35,7 +35,7 @@
 46.set=NATIVE_RESOURCE
 7.baseType=DIRECTORY
 35.set=NATIVE_RESOURCE
-2.path=lib/armeabi-v7a/libucrop.so
+2.path=lib/armeabi-v7a/libfb.so
 16.base=/Users/admin/Desktop/DailySheet/android/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out
 24.set=ASSET
 6.path=index.android.bundle
@@ -189,7 +189,7 @@ count=51
 11.base=/Users/admin/Desktop/DailySheet/android/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out
 36.set=NATIVE_RESOURCE
 39.base=/Users/admin/Desktop/DailySheet/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
-1.path=lib/armeabi-v7a/libfb.so
+1.path=lib/armeabi-v7a/libucrop.so
 25.set=ASSET
 15.base=/Users/admin/Desktop/DailySheet/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
 14.set=NATIVE_RESOURCE
