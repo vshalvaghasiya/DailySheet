@@ -3,7 +3,7 @@ import { Platform, StyleSheet, TouchableOpacity, ScrollView, View } from 'react-
 import { Actions } from 'react-native-router-flux';
 import {
     Container, Header, Title, Button, Body, Icon, Left, Right,
-    Form, Item, Input, Text, DatePicker, Textarea, ActionSheet
+    Form, Item, Input, Text, DatePicker, Textarea, ActionSheet, Picker
 } from 'native-base';
 import ImagePicker from 'react-native-image-crop-picker';
 import Parse from 'parse/react-native';
@@ -34,7 +34,9 @@ class CreateTransaction extends Component {
             Description: '',
             inputDescriptionError: false,
             ImageSource: null,
-            image: null
+            image: null,
+            selected: undefined,
+            inputSelectedError: false,
         };
         this.setDate = this.setDate.bind(this);
         this.validation = this.validation.bind(this);
@@ -57,13 +59,14 @@ class CreateTransaction extends Component {
 
     validation() {
         if (this.state.Title !== '' && this.state.Price && this.state.StoreName &&
-            this.state.Description !== '') {
+            this.state.Description !== '' && this.state.selected != undefined) {
             this.setState({
                 inputTitleError: false,
                 inputPriceError: false,
                 inputStoreNameError: false,
                 inputDateError: false,
                 inputDescriptionError: false,
+                inputSelectedError: false,
                 message: ''
             });
             this.addTransaction();
@@ -113,10 +116,25 @@ class CreateTransaction extends Component {
                     inputDescriptionError: false,
                 });
             }
+            if (this.state.selected === undefined) {
+                this.setState({
+                    inputSelectedError: true,
+                });
+            } else {
+                this.setState({
+                    inputSelectedError: false,
+                });
+            }
             this.setState({
                 message: ALL_FIELDS_REQURED
             });
         }
+    }
+
+    onValueChange(value) {
+        this.setState({
+            selected: value
+        });
     }
 
     addTransaction() {
@@ -135,6 +153,7 @@ class CreateTransaction extends Component {
         objects.set("StoreName", this.state.StoreName)
         objects.set("BillDate", this.state.chosenDate.toString().substr(4, 12))
         objects.set("Description", this.state.Description)
+        objects.set("Category", this.state.selected)
         objects.set("BILL", file)
         objects.save()
             .then((result) => {
@@ -287,6 +306,31 @@ class CreateTransaction extends Component {
                             />
                             <View
                                 style={this.state.inputDateError ? { width: '100%', borderBottomWidth: 1, borderBottomColor: ERROR_COLOR } : { width: '100%', borderBottomWidth: 1, borderBottomColor: 'lightgrey' }}></View>
+                            <View style={{ height: 40 }} />
+                            <Item picker>
+                                <Picker
+                                    mode="dropdown"
+                                    iosIcon={<Icon name="ios-arrow-down-outline" />}
+                                    style={{ width: undefined }}
+                                    placeholder="Select your Category"
+                                    placeholderStyle={{ color: "#bfc6ea" }}
+                                    placeholderIconColor="#007aff"
+                                    selectedValue={this.state.selected}
+                                    onValueChange={this.onValueChange.bind(this)}
+                                >
+                                    <Picker.Item label="Other" value="Other" />
+                                    <Picker.Item label="Shopping" value="Shopping" />
+                                    <Picker.Item label="Petrol" value="Petrol" />
+                                    <Picker.Item label="Bill" value="Bill" />
+                                    <Picker.Item label="Recharge" value="Recharge" />
+                                    <Picker.Item label="Electric" value="Electric" />
+                                    <Picker.Item label="Rent" value="Rent" />
+                                    <Picker.Item label="Food" value="Food" />
+                                </Picker>
+                            </Item>
+                            <View
+                                style={this.state.inputSelectedError ? { width: '100%', borderBottomWidth: 1, borderBottomColor: ERROR_COLOR } : { width: '100%', borderBottomWidth: 1, borderBottomColor: 'lightgrey' }}>
+                            </View>
 
                             <View style={{ height: 40 }} />
                             <Textarea rowSpan={5} bordered placeholder="Description"

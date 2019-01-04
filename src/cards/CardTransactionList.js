@@ -11,7 +11,7 @@ class CardTransactionList extends Component {
                         <View style={{ width: 20 }} />
                         <Body>
                             <Text style={{ fontWeight: 'bold' }}>{this.props.items.get('Title')}</Text>
-                            <Text note>{this.props.items.get('Description')}</Text>
+                            <Text note>{this.props.items.get('Category')}</Text>
                         </Body>
                         <Button transparent >
                             <Icon active

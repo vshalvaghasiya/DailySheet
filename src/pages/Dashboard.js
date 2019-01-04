@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Platform, View, ScrollView, Text, Alert } from 'react-native';
 import {
     Container, Header, Title,
-    Drawer, Button, Fab, Body, Icon, Left, Right
+    Drawer, Button, Fab, Body, Icon, Left, Right,
+    CardItem
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
@@ -18,7 +19,8 @@ class Dashboard extends Component {
         this.state = {
             active: false,
             data: [],
-            loading: false
+            loading: false,
+            Total: 0,
         };
         this._ViewPDF = this._ViewPDF.bind(this);
         this._EditTransaction = this._EditTransaction.bind(this);
@@ -26,6 +28,10 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.GetTransaction();
+    }
+
+    getLstDayOfMonFnc(date) {
+        return new Date(date.getDate(), date.getMonth(), 0).getDate()
     }
 
     GetTransaction() {
@@ -38,6 +44,10 @@ class Dashboard extends Component {
         query.find().then((results) => {
             this.setState({ loading: false });
             this.setState({ data: results });
+            var msgTotal = results.reduce(function (prev, cur) {
+                return Number(prev) + Number(cur.get('Price'));
+            }, 0);
+            this.setState({ Total: msgTotal });
         }, (error) => {
             this.setState({ loading: false });
             console.error(error);
@@ -119,9 +129,27 @@ class Dashboard extends Component {
                         <Right />
                     </Header>
 
+                    <CardItem>
+                        <Left>
+                            <Button transparent >
+                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}> Total Transcation</Text>
+                            </Button>
+                        </Left>
+                        <Right>
+                            <Button transparent>
+                                <Icon active
+                                    type='MaterialCommunityIcons'
+                                    name="currency-inr"
+                                    style={{ color: 'black' }} />
+                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{this.state.Total}</Text>
+                            </Button>
+                        </Right>
+                    </CardItem>
+
                     <ScrollView style={margin}>
                         {this.renderTransactionList()}
                     </ScrollView>
+
                     <View style={{ width: 50, height: 50, position: 'absolute', right: 0, bottom: 20, justifyContent: 'center', alignItems: 'center' }}>
                         <Fab
                             active={this.state.active}
