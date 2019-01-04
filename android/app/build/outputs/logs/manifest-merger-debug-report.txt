@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
+ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12
 MERGED from [:react-native-fetch-blob] /Users/admin/Desktop/DailySheet/node_modules/react-native-fetch-blob/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-14:12
 MERGED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-28:12
 MERGED from [com.facebook.react:react-native:0.56.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/react-native-0.56.0.aar/4294e5b918916a78fabbf599b1b93bb3/AndroidManifest.xml:2:1-15:12
@@ -29,20 +29,20 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/admin/.gradle/ca
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/3b6a71897ce81c62ab0a5f887ad26804/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/378c454a392c2f61158f6f4353af5cba/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/f5aaa5241ed6d94f27af0c2b81afbec3/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
+INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12
+INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12
 	package
 		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:2:5-29
 		INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12
 		INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12
 		INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:11-69
@@ -56,8 +56,18 @@ MERGED from [com.facebook.react:react-native:0.56.0] /Users/admin/.gradle/caches
 MERGED from [com.facebook.react:react-native:0.56.0] /Users/admin/.gradle/caches/transforms-1/files-1.1/react-native-0.56.0.aar/4294e5b918916a78fabbf599b1b93bb3/AndroidManifest.xml:11:5-78
 	android:name
 		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:5:22-75
+uses-permission#android.permission.CAMERA
+ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:6:5-65
+	android:name
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:6:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:7:5-80
+MERGED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:10:5-81
+MERGED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:7:22-78
 application
-ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:7:5-24:19
+ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:9:5-26:19
 MERGED from [:react-native-fetch-blob] /Users/admin/Desktop/DailySheet/node_modules/react-native-fetch-blob/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-12:19
 MERGED from [:react-native-fetch-blob] /Users/admin/Desktop/DailySheet/node_modules/react-native-fetch-blob/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-12:19
 MERGED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:12:5-26:19
@@ -69,39 +79,39 @@ MERGED from [com.facebook.soloader:soloader:0.3.0] /Users/admin/.gradle/caches/t
 MERGED from [org.webkit:android-jsc:r174650] /Users/admin/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/83caa2b145817cb9277eb1c61cfb6028/AndroidManifest.xml:2:3-17
 MERGED from [org.webkit:android-jsc:r174650] /Users/admin/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/83caa2b145817cb9277eb1c61cfb6028/AndroidManifest.xml:2:3-17
 	android:label
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:9:7-39
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:11:7-39
 	android:icon
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:10:7-41
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:12:7-41
 	android:allowBackup
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:11:7-34
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:13:7-34
 	android:theme
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:12:7-38
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:14:7-38
 	android:name
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:8:7-38
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:10:7-38
 activity#com.dailysheet.MainActivity
-ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:13:7-22:18
+ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:15:7-24:18
 	android:label
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:15:9-41
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:17:9-41
 	android:windowSoftInputMode
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:17:9-51
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:19:9-51
 	android:configChanges
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:16:9-79
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:18:9-79
 	android:name
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:14:9-37
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:16:9-37
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:18:9-21:25
+ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:20:9-23:25
 action#android.intent.action.MAIN
-ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:19:13-65
+ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:21:13-65
 	android:name
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:19:21-62
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:21:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:20:13-73
+ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:22:13-73
 	android:name
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:20:23-70
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:22:23-70
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:23:7-84
+ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:25:7-84
 	android:name
-		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:23:17-81
+		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:25:17-81
 uses-sdk
 INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
@@ -164,10 +174,6 @@ INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManife
 		INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
 		ADDED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:10:5-81
-	android:name
-		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:10:22-78
 provider#android.support.v4.content.FileProvider
 ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:13:9-21:20
 	android:grantUriPermissions
@@ -191,6 +197,6 @@ ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/nod
 	android:name
 		ADDED from [:react-native-image-crop-picker] /Users/admin/Desktop/DailySheet/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:24:13-60
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/admin/Desktop/DailySheet/android/app/src/main/AndroidManifest.xml:1:1-28:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE

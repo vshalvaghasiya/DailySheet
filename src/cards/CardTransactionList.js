@@ -15,8 +15,8 @@ class CardTransactionList extends Component {
                         </Body>
                         <Button transparent >
                             <Icon active
-                                type='FontAwesome'
-                                name="edit"
+                                type='MaterialIcons'
+                                name="delete-forever"
                                 style={{ color: 'black' }} />
                         </Button>
                     </CardItem>
