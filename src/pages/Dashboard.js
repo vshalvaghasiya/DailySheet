@@ -21,6 +21,7 @@ class Dashboard extends Component {
             loading: false
         };
         this._ViewPDF = this._ViewPDF.bind(this);
+        this._EditTransaction = this._EditTransaction.bind(this);
     }
 
     componentDidMount() {
@@ -55,7 +56,14 @@ class Dashboard extends Component {
             Actions.viewPDF({ PDF: PDF._url });
         } else {
             Alert.alert('Message..!', 'Bill not found');
+        }
+    }
 
+    _EditTransaction(data) {
+        if (!!data) {
+            Actions.editTransaction({ data: data });
+        } else {
+            Alert.alert('Message..!', 'Data not found');
         }
     }
 
@@ -76,6 +84,7 @@ class Dashboard extends Component {
                     items={item}
                     index={index}
                     _ViewPDF={this._ViewPDF}
+                    _EditTransaction={this._EditTransaction}
                 />
             );
         }

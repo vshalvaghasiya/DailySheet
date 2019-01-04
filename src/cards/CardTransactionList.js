@@ -13,7 +13,7 @@ class CardTransactionList extends Component {
                             <Text style={{ fontWeight: 'bold' }}>{this.props.items.get('Title')}</Text>
                             <Text note>{this.props.items.get('Description')}</Text>
                         </Body>
-                        <Button transparent>
+                        <Button transparent onPress={() => this.props._EditTransaction(this.props.items)} >
                             <Icon active
                                 type='FontAwesome'
                                 name="edit"

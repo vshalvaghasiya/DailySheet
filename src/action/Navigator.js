@@ -7,6 +7,7 @@ import Cashback from '../pages/Cashback';
 import MonthlyReport from '../pages/MonthlyReport';
 import YearlyReport from '../pages/YearlyReport';
 import CreateTransaction from '../pages/CreateTransaction';
+import EditTransaction from '../pages/EditTransaction';
 
 const Navigator = (props) => {
     return (
@@ -50,6 +51,10 @@ const Navigator = (props) => {
                 <Scene
                     key="createTransaction"
                     component={CreateTransaction} hideNavBar={'true'}
+                />
+                <Scene
+                    key="editTransaction"
+                    component={EditTransaction} hideNavBar={'true'}
                 />
 
             </Scene>
