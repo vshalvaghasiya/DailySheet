@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, TouchableOpacity, ScrollView, View } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, ScrollView, View, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
     Container, Header, Title, Button, Body, Icon, Left, Right,
@@ -30,6 +30,7 @@ class CreateTransaction extends Component {
             StoreName: '',
             inputStoreNameError: false,
             chosenDate: '',
+            selectedMonth: '',
             inputDateError: false,
             Description: '',
             inputDescriptionError: false,
@@ -46,7 +47,7 @@ class CreateTransaction extends Component {
     }
 
     setDate(newDate) {
-        this.setState({ chosenDate: newDate });
+        this.setState({ chosenDate: newDate, selectedMonth: newDate.getMonth() + 1 });
     }
 
     navigate() {
@@ -146,7 +147,6 @@ class CreateTransaction extends Component {
             var base64 = this.state.image.uri;
             file = new Parse.File("bill", { base64: base64 });
         }
-
         objects.set("UserID", '1');
         objects.set("Title", this.state.Title);
         objects.set("Price", this.state.Price);
@@ -157,11 +157,30 @@ class CreateTransaction extends Component {
         objects.set("BILL", file)
         objects.save()
             .then((result) => {
-                this.setState({ loading: false });
-                Actions.dashboard();
+                const obj = Parse.Object.extend('Monthly');
+                const query = new Parse.Query(obj);
+                query.equalTo("ID", this.state.selectedMonth.toString());
+                query.find().then((results) => {
+                    let total = Number(results[0].get('Total')) + Number(this.state.Price)
+                    const MyObject = Parse.Object.extend('Monthly');
+                    const query = new Parse.Query(MyObject);
+                    query.get(results[0].id).then((object) => {
+                        object.set("Total", total.toString());
+                        object.save().then((response) => {
+                            this.setState({ loading: false });
+                            Actions.dashboard();
+                        }, (error) => {
+                            this.setState({ loading: false });
+                            Alert.alert('Failed!' + error.message);
+                        });
+                    });
+                }, (error) => {
+                    this.setState({ loading: false });
+                    Alert.alert('Failed!' + error.message);
+                });
             }, (error) => {
                 this.setState({ loading: false });
-                alert('Failed to create new object, with error code: ' + error.message);
+                Alert.alert('Failed to create new object, with error code: ' + error.message);
             });
     }
 
@@ -343,7 +362,6 @@ class CreateTransaction extends Component {
                         </Form>
 
                         <View style={{ height: 40 }} />
-
                         <View style={[VIEW_ROW, { marginLeft: 5, marginRight: 10 }]}>
                             <View style={{ width: 60 }}>
                                 <Icon

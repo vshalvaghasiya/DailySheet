@@ -30,6 +30,7 @@ class EditTransaction extends Component {
             StoreName: '',
             inputStoreNameError: false,
             chosenDate: '',
+            selectedMonth: '',
             inputDateError: false,
             Description: '',
             inputDescriptionError: false,
@@ -41,18 +42,20 @@ class EditTransaction extends Component {
 
     componentDidMount() {
         let data = this.props.data;
+        var date = new Date(data.get('BillDate'));
         this.setState({
             Title: data.get('Title'),
             Price: data.get('Price'),
             StoreName: data.get('StoreName'),
             Description: data.get('Description'),
             chosenDate: data.get('BillDate'),
-            image: data.get('BILL')
+            image: data.get('BILL'),
+            selectedMonth: date.getMonth() + 1 
         });
     }
 
     setDate(newDate) {
-        this.setState({ chosenDate: newDate.toString().substr(4, 12) });
+        this.setState({ chosenDate: newDate.toString().substr(4, 12), selectedMonth: newDate.getMonth() + 1 });
     }
 
     navigate() {
@@ -76,11 +79,30 @@ class EditTransaction extends Component {
             object.set("BillDate", this.state.chosenDate.toString())
             object.set("Description", this.state.Description)
             object.save().then((response) => {
-                Actions.dashboard();
-                console.log('Updated SoccerPlayers', response);
+                const obj = Parse.Object.extend('Monthly');
+                const query1 = new Parse.Query(obj);
+                query1.equalTo("ID", this.state.selectedMonth.toString());
+                query1.find().then((results) => {
+                    let total = Number(results[0].get('Total')) + Number(this.state.Price)
+                    const MyObject = Parse.Object.extend('Monthly');
+                    const query2 = new Parse.Query(MyObject);
+                    query2.get(results[0].id).then((object) => {
+                        object.set("Total", total.toString());
+                        object.save().then((response) => {
+                            this.setState({ loading: false });
+                            Actions.dashboard();
+                        }, (error) => {
+                            this.setState({ loading: false });
+                            Alert.alert('Failed!' + error.message);
+                        });
+                    });
+                }, (error) => {
+                    this.setState({ loading: false });
+                    Alert.alert('Failed!' + error.message);
+                });
             }, (error) => {
-                alert('Failed!');
-                console.error('Error while updating SoccerPlayers', error);
+                this.setState({ loading: false });
+                alert('Failed!' + error.message);
             });
         });
     }

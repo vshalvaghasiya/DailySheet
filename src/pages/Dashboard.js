@@ -37,7 +37,6 @@ class Dashboard extends Component {
 
     GetTransaction() {
         this.setState({ loading: true });
-        // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
         const MyObject = Parse.Object.extend('DailyReport');
         const query = new Parse.Query(MyObject);
         query.descending('BillDate');
