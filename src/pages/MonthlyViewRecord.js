@@ -40,6 +40,9 @@ class MonthlyViewRecord extends Component {
         const MyObject = Parse.Object.extend('DailyReport');
         const query = new Parse.Query(MyObject);
         query.descending('BillDate');
+        query.greaterThanOrEqualTo('BillDate','Jan 1 2019 ');
+        query.lessThanOrEqualTo('BillDate','Jan 31 2019 ');
+        
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });
