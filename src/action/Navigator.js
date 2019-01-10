@@ -7,6 +7,7 @@ import MonthlyReport from '../pages/MonthlyReport';
 import YearlyReport from '../pages/YearlyReport';
 import CreateTransaction from '../pages/CreateTransaction';
 import EditTransaction from '../pages/EditTransaction';
+import MonthlyViewRecord from '../pages/MonthlyViewRecord'
 
 import Cashback from '../pages/Cashback';
 import CreateCashBack from '../pages/CreateCashBack';
@@ -64,6 +65,10 @@ const Navigator = (props) => {
                     component={CreateCashBack} hideNavBar={'true'}
                 />
 
+                <Scene
+                    key="monthlyviewrecord"
+                    component={MonthlyViewRecord} hideNavBar={'true'}
+                />
             </Scene>
         </Router>
     );

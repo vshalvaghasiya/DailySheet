@@ -19,7 +19,7 @@ class MonthlyReport extends Component {
             data: [],
             loading: false
         };
-        this._ViewPDF = this._ViewPDF.bind(this);
+        this.viewRecord = this.viewRecord.bind(this);
     }
 
     componentDidMount() {
@@ -40,21 +40,16 @@ class MonthlyReport extends Component {
         });
     }
 
+    viewRecord(){
+        Actions.monthlyviewrecord();
+    }
+
     closeDrawer = () => {
         this.drawer._root.close()
     };
     openDrawer = () => {
         this.drawer._root.open()
     };
-
-    _ViewPDF(PDF) {
-        if (!!PDF) {
-            Actions.viewPDF({ PDF: PDF._url });
-        } else {
-            Alert.alert('Message..!', 'Bill not found');
-
-        }
-    }
 
     renderTransactionList() {
         if (this.state.loading) {
@@ -72,7 +67,7 @@ class MonthlyReport extends Component {
                     key={`index-${index}`}
                     items={item}
                     index={index}
-                    _ViewPDF={this._ViewPDF}
+                    viewRecord={this.viewRecord}
                 />
             );
         }
