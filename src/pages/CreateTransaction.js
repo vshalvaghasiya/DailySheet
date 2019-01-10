@@ -238,7 +238,7 @@ class CreateTransaction extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title></Title>
+                        <Title>Create Transcation</Title>
                     </Body>
                     <Right />
                 </Header>

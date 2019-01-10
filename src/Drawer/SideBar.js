@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, View, ImageBackground, Image } from 'react-native';
-import { Container, Header, Content, Text, List, Button, Body, Icon, Left, Right, ListItem } from 'native-base';
+import { Container, Header, Content, Text, List, Button, Body, Title, Left, Right, ListItem } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 const routes = ['Dashboard', 'Cashback', 'Monthly Report', 'Yearly Report', 'Contact Us'];
 class SideBar extends Component {
@@ -43,6 +43,7 @@ class SideBar extends Component {
 
                     </Left>
                     <Body>
+                    <Title>Daaily Sheet</Title>
                     </Body>
                     <Right />
                 </Header>

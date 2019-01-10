@@ -123,7 +123,7 @@ class CreateCashBack extends Component {
         this.setState({ loading: true });
         const object = Parse.Object.extend("Cashback");
         const objects = new object();
-
+    
         objects.set("UserID", '1');
         objects.set("Title", this.state.Title);
         objects.set("Price", this.state.Price);
@@ -133,7 +133,7 @@ class CreateCashBack extends Component {
         objects.save()
             .then((result) => {
                 this.setState({ loading: false });
-                Actions.dashboard();
+                Actions.cashback();
             }, (error) => {
                 this.setState({ loading: false });
                 alert('Failed to create new object, with error code: ' + error.message);

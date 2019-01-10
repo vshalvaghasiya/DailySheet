@@ -23,7 +23,8 @@ class Dashboard extends Component {
             Total: 0,
         };
         this._ViewPDF = this._ViewPDF.bind(this);
-        this._EditTransaction = this._EditTransaction.bind(this);
+        this.editRecord = this.editRecord.bind(this);
+        this.deleteRecord = this.deleteRecord.bind(this);
     }
 
     componentDidMount() {
@@ -37,8 +38,8 @@ class Dashboard extends Component {
     GetTransaction() {
         this.setState({ loading: true });
         // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
-        const NewsObject = Parse.Object.extend('DailyReport');
-        const query = new Parse.Query(NewsObject);
+        const MyObject = Parse.Object.extend('DailyReport');
+        const query = new Parse.Query(MyObject);
         query.descending('BillDate');
         query.limit = 1000;
         query.find().then((results) => {
@@ -69,7 +70,21 @@ class Dashboard extends Component {
         }
     }
 
-    _EditTransaction(data) {
+    deleteRecord(id) {
+        this.setState({ loading: true });
+        const MyObject = Parse.Object.extend('DailyReport');
+        const query = new Parse.Query(MyObject);
+        query.get(id).then((object) => {
+            object.destroy().then((response) => {
+                this.setState({ loading: false });
+                this.GetTransaction();
+            }, (error) => {
+                this.setState({ loading: false });
+            });
+        });
+    }
+
+    editRecord(data) {
         if (!!data) {
             Actions.editTransaction({ data: data });
         } else {
@@ -94,7 +109,8 @@ class Dashboard extends Component {
                     items={item}
                     index={index}
                     _ViewPDF={this._ViewPDF}
-                    _EditTransaction={this._EditTransaction}
+                    editRecord={this.editRecord}
+                    deleteRecord={this.deleteRecord}
                 />
             );
         }

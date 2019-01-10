@@ -52,7 +52,7 @@ class EditTransaction extends Component {
     }
 
     setDate(newDate) {
-        this.setState({ chosenDate: newDate });
+        this.setState({ chosenDate: newDate.toString().substr(4, 12) });
     }
 
     navigate() {
@@ -65,139 +65,24 @@ class EditTransaction extends Component {
 
     updateTransaction() {
         this.setState({ loading: true });
-        var file = undefined
-        if (!!this.state.image) {
-            var base64 = this.state.image.uri;
-            file = new Parse.File("bill", { base64: base64 });
-        }
-
         let data = this.props.data;
-        var GameScore = Parse.Object.extend("DailyReport");
-        // var gameScore = new GameScore();
-        const gameScore = new Parse.Query(GameScore);
-        gameScore.equalTo("objectId", data.id);
-        gameScore.find().then((results) => {
-            results.set("UserID", '1');
-            results.set("Title", this.state.Title);
-            results.set("Price", this.state.Price);
-            results.set("StoreName", this.state.StoreName)
-            results.set("BillDate", this.state.chosenDate.toString().substr(4, 12))
-            results.set("Description", this.state.Description)
-            results.set("BILL", file)
-            results.save()
-                .then((result) => {
-                    this.setState({ loading: false });
-                    Actions.dashboard();
-                }, (error) => {
-                    this.setState({ loading: false });
-                    alert('Failed to create new object, with error code: ' + error.message);
-                });
-        }, (error) => {
-            this.setState({ loading: false });
-            console.error(error);
+        const MyObject = Parse.Object.extend('DailyReport');
+        const query = new Parse.Query(MyObject);
+        query.get(data.id).then((object) => {
+            object.set("UserID", '1');
+            object.set("Title", this.state.Title);
+            object.set("Price", this.state.Price);
+            object.set("StoreName", this.state.StoreName)
+            object.set("BillDate", this.state.chosenDate.toString())
+            object.set("Description", this.state.Description)
+            object.save().then((response) => {
+                Actions.dashboard();
+                console.log('Updated SoccerPlayers', response);
+            }, (error) => {
+                alert('Failed!');
+                console.error('Error while updating SoccerPlayers', error);
+            });
         });
-
-
-        // let data = this.props.data;
-        // alert(data.id);
-        // const NewsObject = Parse.Object.extend('DailyReport');
-        // const query = new Parse.Query(NewsObject);
-        // query.equalTo("objectId", data.id);
-        // query.find().then((objects) => {
-        //     objects.set("UserID", '1');
-        //     objects.set("Title", this.state.Title);
-        //     objects.set("Price", this.state.Price);
-        //     objects.set("StoreName", this.state.StoreName)
-        //     objects.set("BillDate", this.state.chosenDate.toString().substr(4, 12))
-        //     objects.set("Description", this.state.Description)
-        //     objects.set("BILL", file)
-        //     objects.save()
-        //         .then((result) => {
-        //             this.setState({ loading: false });
-        //             Actions.dashboard();
-        //         }, (error) => {
-        //             this.setState({ loading: false });
-        //             alert('Failed to create new object, with error code: ' + error.message);
-        //         });
-        // }, (error) => {
-        //     this.setState({ loading: false });
-        //     console.error(error);
-        // });
-
-        // var query = new Parse.Query('DailyReport');
-
-        // query.first({
-        //     success: function (objects) {
-
-        // objects.set("UserID", '1');
-        // objects.set("Title", this.state.Title);
-        // objects.set("Price", this.state.Price);
-        // objects.set("StoreName", this.state.StoreName)
-        // objects.set("BillDate", this.state.chosenDate.toString().substr(4, 12))
-        // objects.set("Description", this.state.Description)
-        // objects.set("BILL", file)
-        // objects.save()
-        //     .then((result) => {
-        //         this.setState({ loading: false });
-        //         Actions.dashboard();
-        //     }, (error) => {
-        //         this.setState({ loading: false });
-        //         alert('Failed to create new object, with error code: ' + error.message);
-        //     });
-        //     },
-        //     error: function (error) {
-        //         this.setState({ loading: false });
-        //         alert('Failed to create new object, with error code: ' + error.message);
-        //     }
-        // });
-    }
-
-    openDialog() {
-        ActionSheet.show({
-            options: Options,
-            cancelButtonIndex: 2,
-            title: 'Select Options'
-        },
-            buttonIndex => {
-                console.log(buttonIndex);
-                if (buttonIndex === 0) {
-                    ImagePicker.openCamera({
-                        width: 200,
-                        height: 200,
-                        cropping: true,
-                        includeBase64: true,
-                        includeExif: true,
-                    }).then(image => {
-                        this.setState({
-                            image: {
-                                uri: `data:${image.mime};base64,${image.data}`,
-                                width: image.width,
-                                height: image.height
-                            },
-                            ImageSource: image.sourceURL,
-                        });
-                    }).catch(e => console.log(e));
-                } else if (buttonIndex === 1) {
-                    ImagePicker.openPicker({
-                        width: 200,
-                        height: 200,
-                        cropping: true,
-                        includeBase64: true,
-                        includeExif: true,
-                    }).then(image => {
-                        this.setState({
-                            image: {
-                                uri: `data:${image.mime};base64,${image.data}`,
-                                width: image.width,
-                                height: image.height
-                            },
-                            ImageSource: image.sourceURL,
-                        }, () => {
-                        });
-                    }).catch(e => console.log(e));
-                }
-            }
-        );
     }
 
     spinerRender() {
@@ -225,7 +110,7 @@ class EditTransaction extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title></Title>
+                        <Title>Update Transcation</Title>
                     </Body>
                     <Right />
                 </Header>
@@ -288,7 +173,7 @@ class EditTransaction extends Component {
                                 modalTransparent={false}
                                 animationType={"fade"}
                                 androidMode={"default"}
-                                placeHolderText={this.state.chosenDate}
+                                placeHolderText={this.state.chosenDate.toString().substr(4, 12)}
                                 textStyle={{ color: "#232323" }}
                                 onChangeText={this.state.chosenDate.toString().substr(4, 12)}
                                 placeHolderTextStyle={{ color: "#232323" }}
@@ -306,23 +191,7 @@ class EditTransaction extends Component {
                             <View
                                 style={this.state.inputDescriptionError ? { width: '100%', borderBottomWidth: 1, borderBottomColor: ERROR_COLOR } : { width: '100%', borderBottomWidth: 1, borderBottomColor: 'lightgrey' }}>
                             </View>
-
                         </Form>
-
-                        <View style={{ height: 40 }} />
-
-                        <View style={[VIEW_ROW, { marginLeft: 5, marginRight: 10 }]}>
-                            <View style={{ width: 60 }}>
-                                <Icon
-                                    name='photo-size-select-actual'
-                                    type='MaterialIcons'
-                                    style={{ color: '#000000' }}
-                                    onPress={this.openDialog.bind(this)} />
-                            </View>
-                            <View style={{ flex: 1, marginTop: 5 }}>
-                                <Text>Select Bill Image</Text>
-                            </View>
-                        </View>
 
                         <View style={{ height: 20 }} />
                         <Text style={TXT_Message}>

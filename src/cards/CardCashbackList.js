@@ -13,7 +13,7 @@ class CardCashbackList extends Component {
                             <Text style={{ fontWeight: 'bold' }}>{this.props.items.get('Title')}</Text>
                             <Text note>{this.props.items.get('Description')}</Text>
                         </Body>
-                        <Button transparent >
+                        <Button transparent onPress={() => this.props.deleteRecord(this.props.items.id)} >
                             <Icon active
                                 type='MaterialIcons'
                                 name="delete-forever"

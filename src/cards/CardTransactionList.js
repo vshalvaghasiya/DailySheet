@@ -13,12 +13,19 @@ class CardTransactionList extends Component {
                             <Text style={{ fontWeight: 'bold' }}>{this.props.items.get('Title')}</Text>
                             <Text note>{this.props.items.get('Category')}</Text>
                         </Body>
-                        <Button transparent >
+                        <Button transparent onPress={() => this.props.editRecord(this.props.items)} >
+                            <Icon active
+                                type='FontAwesome'
+                                name="edit"
+                                style={{ color: 'black' }} />
+                        </Button>
+                        <Button transparent onPress={() => this.props.deleteRecord(this.props.items.id)} >
                             <Icon active
                                 type='MaterialIcons'
                                 name="delete-forever"
                                 style={{ color: 'black' }} />
                         </Button>
+                        
                     </CardItem>
 
                     <CardItem>

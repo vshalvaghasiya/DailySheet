@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, View, ScrollView, Text, Alert } from 'react-native';
 import {
     Container, Header, Title,
-    Drawer, Button, Fab, Body, Icon, Left, Right
+    Drawer, Button, Fab, Body, Icon, Left, Right, CardItem
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
@@ -18,9 +18,11 @@ class Cashback extends Component {
         this.state = {
             active: false,
             data: [],
-            loading: false
+            loading: false,
+            Total: 0,
         };
         this._ViewPDF = this._ViewPDF.bind(this);
+        this.deleteRecord = this.deleteRecord.bind(this);
     }
 
     componentDidMount() {
@@ -37,6 +39,10 @@ class Cashback extends Component {
         query.find().then((results) => {
             this.setState({ loading: false });
             this.setState({ data: results });
+            var msgTotal = results.reduce(function (prev, cur) {
+                return Number(prev) + Number(cur.get('Price'));
+            }, 0);
+            this.setState({ Total: msgTotal });
         }, (error) => {
             this.setState({ loading: false });
             console.error(error);
@@ -55,8 +61,21 @@ class Cashback extends Component {
             Actions.viewPDF({ PDF: PDF._url });
         } else {
             Alert.alert('Message..!', 'Bill not found');
-
         }
+    }
+
+    deleteRecord(id) {
+        this.setState({ loading: true });
+        const MyObject = Parse.Object.extend('Cashback');
+        const query = new Parse.Query(MyObject);
+        query.get(id).then((object) => {
+            object.destroy().then((response) => {
+                this.setState({ loading: false });
+                this.GetTransaction();
+            }, (error) => {
+                this.setState({ loading: false });
+            });
+        });
     }
 
     renderCashbackList() {
@@ -76,6 +95,7 @@ class Cashback extends Component {
                     items={item}
                     index={index}
                     _ViewPDF={this._ViewPDF}
+                    deleteRecord={this.deleteRecord}
                 />
             );
         }
@@ -109,6 +129,23 @@ class Cashback extends Component {
                         </Body>
                         <Right />
                     </Header>
+
+                    <CardItem>
+                        <Left>
+                            <Button transparent >
+                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}> Total Transcation</Text>
+                            </Button>
+                        </Left>
+                        <Right>
+                            <Button transparent>
+                                <Icon active
+                                    type='MaterialCommunityIcons'
+                                    name="currency-inr"
+                                    style={{ color: 'black' }} />
+                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{this.state.Total}</Text>
+                            </Button>
+                        </Right>
+                    </CardItem>
 
                     <ScrollView style={margin}>
                         {this.renderCashbackList()}
