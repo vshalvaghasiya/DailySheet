@@ -914,7 +914,6 @@ layout ucrop_layout_scale_wheel
 layout ucrop_view
 menu ucrop_menu_activity
 mipmap ic_launcher
-mipmap ic_launcher_round
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

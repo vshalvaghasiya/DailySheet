@@ -39,10 +39,9 @@ class MonthlyViewRecord extends Component {
         this.setState({ loading: true });
         const MyObject = Parse.Object.extend('DailyReport');
         const query = new Parse.Query(MyObject);
-        query.descending('BillDate');
-        query.greaterThanOrEqualTo('BillDate','Jan 1 2019 ');
-        query.lessThanOrEqualTo('BillDate','Jan 31 2019 ');
-        
+        query.addAscending('BillDate');
+        query.greaterThanOrEqualTo('BillDate',this.props.StartDate);
+        query.lessThanOrEqualTo('BillDate',this.props.EndDate);
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });
@@ -65,14 +64,47 @@ class MonthlyViewRecord extends Component {
         }
     }
 
-    deleteRecord(id) {
+    deleteRecord(data) {
+        Alert.alert(
+            'Are you sure delete?',
+            '',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                { text: 'OK', onPress: () => this.actionSheet(data) },
+            ],
+            { cancelable: false }
+        )
+    }
+
+    actionSheet(data) {
         this.setState({ loading: true });
         const MyObject = Parse.Object.extend('DailyReport');
         const query = new Parse.Query(MyObject);
-        query.get(id).then((object) => {
+        query.get(data.id).then((object) => {
             object.destroy().then((response) => {
-                this.setState({ loading: false });
-                this.GetTransaction();
+                var date = new Date(data.get('BillDate'));
+                const obj = Parse.Object.extend('Monthly');
+                const query1 = new Parse.Query(obj);
+                let selectedMonth = date.getMonth() + 1;
+                query1.equalTo("ID", selectedMonth.toString());
+                query1.find().then((results) => {
+                    let total = Number(results[0].get('Total')) - Number(data.get('Price'));
+                    const MyObject = Parse.Object.extend('Monthly');
+                    const query2 = new Parse.Query(MyObject);
+                    query2.get(results[0].id).then((object) => {
+                        object.set("Total", total.toString());
+                        object.save().then((response) => {
+                            this.setState({ loading: false });
+                            this.GetTransaction();
+                        }, (error) => {
+                            this.setState({ loading: false });
+                            Alert.alert('Failed!' + error.message);
+                        });
+                    });
+                }, (error) => {
+                    this.setState({ loading: false });
+                    Alert.alert('Failed!' + error.message);
+                });
             }, (error) => {
                 this.setState({ loading: false });
             });
@@ -164,21 +196,6 @@ class MonthlyViewRecord extends Component {
                     <ScrollView style={margin}>
                         {this.renderTransactionList()}
                     </ScrollView>
-
-                    <View style={{ width: 50, height: 50, position: 'absolute', right: 0, bottom: 20, justifyContent: 'center', alignItems: 'center' }}>
-                        <Fab
-                            active={this.state.active}
-                            direction="up"
-                            containerStyle={{}}
-                            style={{ backgroundColor: '#5067FF' }}
-                            position="bottomRight"
-                            onPress={() => Actions.createTransaction()}>
-                            <Icon
-                                type='Entypo'
-                                name="plus" />
-                        </Fab>
-                    </View>
-
                 </Container>
             </Drawer>
         );

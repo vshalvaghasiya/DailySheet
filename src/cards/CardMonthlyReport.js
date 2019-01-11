@@ -7,7 +7,7 @@ class CardMonthlyReport extends Component {
         return (
             <Content>
                 <Card>
-                <TouchableOpacity onPress={() => this.props.viewRecord(this.props.items.id)}>
+                <TouchableOpacity onPress={() => this.props.viewRecord(this.props.items)}>
                     <CardItem>
                         <View style={{ width: 20 }} />
                             <Body>

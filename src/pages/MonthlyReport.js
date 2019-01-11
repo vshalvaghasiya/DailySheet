@@ -40,8 +40,8 @@ class MonthlyReport extends Component {
         });
     }
 
-    viewRecord(){
-        Actions.monthlyviewrecord();
+    viewRecord(data){
+        Actions.monthlyviewrecord({StartDate: data.get('MonthStart'), EndDate:data.get('MonthEND')});
     }
 
     closeDrawer = () => {

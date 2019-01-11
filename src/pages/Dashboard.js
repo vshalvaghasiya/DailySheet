@@ -39,7 +39,7 @@ class Dashboard extends Component {
         this.setState({ loading: true });
         const MyObject = Parse.Object.extend('DailyReport');
         const query = new Parse.Query(MyObject);
-        query.descending('BillDate');
+        query.addAscending('BillDate');
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });
@@ -69,14 +69,47 @@ class Dashboard extends Component {
         }
     }
 
-    deleteRecord(id) {
+    deleteRecord(data) {
+        Alert.alert(
+            'Are you sure delete?',
+            '',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                { text: 'OK', onPress: () => this.actionSheet(data) },
+            ],
+            { cancelable: false }
+        )
+    }
+
+    actionSheet(data) {
         this.setState({ loading: true });
         const MyObject = Parse.Object.extend('DailyReport');
         const query = new Parse.Query(MyObject);
-        query.get(id).then((object) => {
+        query.get(data.id).then((object) => {
             object.destroy().then((response) => {
-                this.setState({ loading: false });
-                this.GetTransaction();
+                var date = new Date(data.get('BillDate'));
+                const obj = Parse.Object.extend('Monthly');
+                const query1 = new Parse.Query(obj);
+                let selectedMonth = date.getMonth() + 1;
+                query1.equalTo("ID", selectedMonth.toString());
+                query1.find().then((results) => {
+                    let total = Number(results[0].get('Total')) - Number(data.get('Price'));
+                    const MyObject = Parse.Object.extend('Monthly');
+                    const query2 = new Parse.Query(MyObject);
+                    query2.get(results[0].id).then((object) => {
+                        object.set("Total", total.toString());
+                        object.save().then((response) => {
+                            this.setState({ loading: false });
+                            this.GetTransaction();
+                        }, (error) => {
+                            this.setState({ loading: false });
+                            Alert.alert('Failed!' + error.message);
+                        });
+                    });
+                }, (error) => {
+                    this.setState({ loading: false });
+                    Alert.alert('Failed!' + error.message);
+                });
             }, (error) => {
                 this.setState({ loading: false });
             });

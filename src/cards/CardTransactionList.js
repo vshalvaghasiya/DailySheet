@@ -19,7 +19,7 @@ class CardTransactionList extends Component {
                                 name="edit"
                                 style={{ color: 'black' }} />
                         </Button>
-                        <Button transparent onPress={() => this.props.deleteRecord(this.props.items.id)} >
+                        <Button transparent onPress={() => this.props.deleteRecord(this.props.items)} >
                             <Icon active
                                 type='MaterialIcons'
                                 name="delete-forever"

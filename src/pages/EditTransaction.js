@@ -26,6 +26,7 @@ class EditTransaction extends Component {
             Title: '',
             inputTitleError: false,
             Price: '',
+            OldPrice: '',
             inputPriceError: false,
             StoreName: '',
             inputStoreNameError: false,
@@ -46,11 +47,12 @@ class EditTransaction extends Component {
         this.setState({
             Title: data.get('Title'),
             Price: data.get('Price'),
+            OldPrice: data.get('Price'),
             StoreName: data.get('StoreName'),
             Description: data.get('Description'),
             chosenDate: data.get('BillDate'),
             image: data.get('BILL'),
-            selectedMonth: date.getMonth() + 1 
+            selectedMonth: date.getMonth() + 1
         });
     }
 
@@ -83,7 +85,7 @@ class EditTransaction extends Component {
                 const query1 = new Parse.Query(obj);
                 query1.equalTo("ID", this.state.selectedMonth.toString());
                 query1.find().then((results) => {
-                    let total = Number(results[0].get('Total')) + Number(this.state.Price)
+                    let total = Number(results[0].get('Total')) - Number(this.state.OldPrice) + Number(this.state.Price)
                     const MyObject = Parse.Object.extend('Monthly');
                     const query2 = new Parse.Query(MyObject);
                     query2.get(results[0].id).then((object) => {
