@@ -1,19 +1,19 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
-import Dashboard from '../pages/Dashboard';
-import ViewPDF from '../pages/ViewPDF';
-import MonthlyReport from '../pages/MonthlyReport';
-import YearlyReport from '../pages/YearlyReport';
-import CreateTransaction from '../pages/CreateTransaction';
-import EditTransaction from '../pages/EditTransaction';
-import MonthlyViewRecord from '../pages/MonthlyViewRecord'
-import BorrowMoney from '../pages/BorrowMoney'
-import BorrowedMoney from '../pages/BorrowedMoney'
-import Cashback from '../pages/Cashback';
-import CreateCashBack from '../pages/CreateCashBack';
-import CreateBorrowMoney from '../pages/CreateBorrowMoney';
-import ContactUS from '../pages/ContactUS';
+import Dashboard from '../pages/Dashboard/Dashboard';
+import ViewPDF from '../pages/Dashboard/ViewPDF';
+import MonthlyReport from '../pages/Report/MonthlyReport';
+import YearlyReport from '../pages/Report/YearlyReport';
+import CreateTransaction from '../pages/Dashboard/CreateTransaction';
+import EditTransaction from '../pages/Dashboard/EditTransaction';
+import MonthlyViewRecord from '../pages/Report/MonthlyViewRecord'
+import BorrowMoney from '../pages/BorrowMoney/BorrowMoney'
+import BorrowedMoney from '../pages/BorrowedMoney/BorrowedMoney'
+import Cashback from '../pages/Cashback/Cashback';
+import CreateCashBack from '../pages/Cashback/CreateCashBack';
+import CreateBorrowMoney from '../pages/BorrowMoney/CreateBorrowMoney';
+import ContactUS from '../pages/ContactUS/ContactUS';
 const Navigator = (props) => {
     return (
         <Router

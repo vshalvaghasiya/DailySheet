@@ -7,8 +7,8 @@ import {
 } from 'native-base';
 import Parse from 'parse/react-native';
 
-import { ALL_FIELDS_REQURED, TEXT_COLOR, BORDER_COLOR, ERROR_COLOR } from '../helper/Constant';
-import { Spinner } from '../common/Spinner';
+import { ALL_FIELDS_REQURED, TEXT_COLOR, BORDER_COLOR, ERROR_COLOR } from '../../helper/Constant';
+import { Spinner } from '../../common/Spinner';
 
 class CreateBorrowMoney extends Component {
 

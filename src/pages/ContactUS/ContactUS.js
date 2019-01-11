@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { Platform, View, ScrollView, Text, Alert } from 'react-native';
+import { Platform, View, Image, Text, Alert } from 'react-native';
 import {
     Container, Header, Title,
-    Drawer, Button, Fab, Body, Icon, Left, Right, CardItem
+    Drawer, Button, Fab, Body, Icon, Left, Right, CardItem, Content
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
-import { Spinner } from '../common/Spinner';
+import { Spinner } from '../../common/Spinner';
+import { AppIcon } from '../../helper/Constant';
 
-import CardMoney from '../cards/CardMoney';
-import SideBar from '../Drawer/SideBar';
-class BorrowMoney extends Component {
+import CardCashbackList from '../../cards/CardCashbackList';
+import SideBar from '../../Drawer/SideBar';
+class ContactUS extends Component {
 
     constructor(props) {
         super(props);
@@ -20,6 +21,7 @@ class BorrowMoney extends Component {
             loading: false,
             Total: 0,
         };
+        this._ViewPDF = this._ViewPDF.bind(this);
         this.deleteRecord = this.deleteRecord.bind(this);
     }
 
@@ -30,15 +32,15 @@ class BorrowMoney extends Component {
     GetTransaction() {
         this.setState({ loading: true });
         // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
-        const NewsObject = Parse.Object.extend('Borrowing');
+        const NewsObject = Parse.Object.extend('Cashback');
         const query = new Parse.Query(NewsObject);
-        query.addAscending('Date');
+        query.addAscending('CashbackDate');
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });
             this.setState({ data: results });
             var msgTotal = results.reduce(function (prev, cur) {
-                return Number(prev) + Number(cur.get('Money'));
+                return Number(prev) + Number(cur.get('Price'));
             }, 0);
             this.setState({ Total: msgTotal });
         }, (error) => {
@@ -54,6 +56,14 @@ class BorrowMoney extends Component {
         this.drawer._root.open()
     };
 
+    _ViewPDF(PDF) {
+        if (!!PDF) {
+            Actions.viewPDF({ PDF: PDF._url });
+        } else {
+            Alert.alert('Message..!', 'Bill not found');
+        }
+    }
+
     deleteRecord(id) {
         Alert.alert(
             'Are you sure delete?',
@@ -68,7 +78,7 @@ class BorrowMoney extends Component {
 
     actionSheet(id) {
         this.setState({ loading: true });
-        const MyObject = Parse.Object.extend('Borrowing');
+        const MyObject = Parse.Object.extend('Cashback');
         const query = new Parse.Query(MyObject);
         query.get(id).then((object) => {
             object.destroy().then((response) => {
@@ -80,7 +90,7 @@ class BorrowMoney extends Component {
         });
     }
 
-    renderMoneyList() {
+    renderCashbackList() {
         if (this.state.loading) {
             return (
                 <View style={styles.center3}>
@@ -92,10 +102,11 @@ class BorrowMoney extends Component {
         if (this.state.data && this.state.data.length > 0) {
             console.log(this.state.data);
             return this.state.data.map((item, index) =>
-                <CardMoney
+                <CardCashbackList
                     key={`index-${index}`}
                     items={item}
                     index={index}
+                    _ViewPDF={this._ViewPDF}
                     deleteRecord={this.deleteRecord}
                 />
             );
@@ -126,45 +137,35 @@ class BorrowMoney extends Component {
                             </Button>
                         </Left>
                         <Body>
-                            <Title>Borrow Money</Title>
+                            <Title>Contact US</Title>
                         </Body>
                         <Right />
                     </Header>
 
-                    <CardItem>
-                        <Left>
-                            <Button transparent >
-                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}> Total Borrowing</Text>
-                            </Button>
-                        </Left>
-                        <Right>
-                            <Button transparent>
-                                <Icon active
-                                    type='MaterialCommunityIcons'
-                                    name="currency-inr"
-                                    style={{ color: 'black' }} />
-                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{this.state.Total}</Text>
-                            </Button>
-                        </Right>
-                    </CardItem>
-
-                    <ScrollView style={margin}>
-                        {this.renderMoneyList()}
-                    </ScrollView>
-                    <View style={{ width: 50, height: 50, position: 'absolute', right: 0, bottom: 20, justifyContent: 'center', alignItems: 'center' }}>
-                        <Fab
-                            active={this.state.active}
-                            direction="up"
-                            containerStyle={{}}
-                            style={{ backgroundColor: '#5067FF' }}
-                            position="bottomRight"
-                            onPress={() => Actions.CreateBorrowMoney()}>
-                            <Icon
-                                type='Entypo'
-                                name="plus" />
-                        </Fab>
-                    </View>
-
+                    <Content style={{ marginTop: 150 }}>
+                        <Body>
+                            <Image source={AppIcon} style={{ height: 200, width: 200 }} />
+                            <Text
+                                style={{
+                                    fontWeight: 'bold', fontSize: 20, width: '100%'
+                                }}>
+                                Daily Sheet
+                           </Text>
+                            <View style={{ height: 20 }}></View>
+                            <Text
+                                style={{
+                                    fontWeight: 'normal', fontSize: 20, width: '100%'
+                                }}>
+                                vaghasiya907@gmail.com
+                           </Text>
+                            <Text
+                                style={{
+                                    fontWeight: 'normal', fontSize: 20, width: '100%'
+                                }}>
+                                Version 1.0
+                           </Text>
+                        </Body>
+                    </Content>
                 </Container>
             </Drawer>
         );
@@ -177,4 +178,4 @@ const styles = {
     }
 };
 
-export default BorrowMoney;
+export default ContactUS;

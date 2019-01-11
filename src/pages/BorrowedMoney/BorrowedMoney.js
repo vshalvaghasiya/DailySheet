@@ -6,10 +6,10 @@ import {
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
-import { Spinner } from '../common/Spinner';
+import { Spinner } from '../../common/Spinner';
 
-import CardCashbackList from '../cards/CardCashbackList';
-import SideBar from '../Drawer/SideBar';
+import CardCashbackList from '../../cards/CardCashbackList';
+import SideBar from '../../Drawer/SideBar';
 class BorrowedMoney extends Component {
 
     constructor(props) {

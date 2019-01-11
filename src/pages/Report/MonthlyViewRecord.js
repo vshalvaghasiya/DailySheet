@@ -8,10 +8,10 @@ import {
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
 import Moment from 'moment';
-import { Spinner } from '../common/Spinner';
+import { Spinner } from '../../common/Spinner';
 
-import CardTransaction from '../cards/CardTransactionList';
-import SideBar from '../Drawer/SideBar';
+import CardTransaction from '../../cards/CardTransactionList';
+import SideBar from '../../Drawer/SideBar';
 class MonthlyViewRecord extends Component {
 
     constructor(props) {

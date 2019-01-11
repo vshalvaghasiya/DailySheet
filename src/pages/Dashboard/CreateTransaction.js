@@ -8,8 +8,8 @@ import {
 import ImagePicker from 'react-native-image-crop-picker';
 import Parse from 'parse/react-native';
 
-import { ALL_FIELDS_REQURED, TEXT_COLOR, BORDER_COLOR, ERROR_COLOR } from '../helper/Constant';
-import { Spinner } from '../common/Spinner';
+import { ALL_FIELDS_REQURED, TEXT_COLOR, BORDER_COLOR, ERROR_COLOR } from '../../helper/Constant';
+import { Spinner } from '../../common/Spinner';
 
 const Options = [
     { text: 'Camera' },

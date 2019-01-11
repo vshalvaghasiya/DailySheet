@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { Container, Header, Title, Button, Body, Icon, Left, Right } from 'native-base';
 import ImageZoom from 'react-native-image-pan-zoom';
 
-import { APPID, BASE_URL } from '../helper/Constant';
+import { APPID, BASE_URL } from '../../helper/Constant';
 class ViewPDF extends Component {
 
     constructor(props) {

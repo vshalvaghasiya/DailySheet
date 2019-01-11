@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import { Platform, View, Image, Text, Alert } from 'react-native';
+import { Platform, View, ScrollView, Text, Alert } from 'react-native';
 import {
     Container, Header, Title,
-    Drawer, Button, Fab, Body, Icon, Left, Right, CardItem, Content
+    Drawer, Button, Fab, Body, Icon, Left, Right, CardItem
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
-import { Spinner } from '../common/Spinner';
-import { AppIcon } from '../helper/Constant';
+import { Spinner } from '../../common/Spinner';
 
-import CardCashbackList from '../cards/CardCashbackList';
-import SideBar from '../Drawer/SideBar';
-class ContactUS extends Component {
+import CardCashbackList from '../../cards/CardCashbackList';
+import SideBar from '../../Drawer/SideBar';
+class Cashback extends Component {
 
     constructor(props) {
         super(props);
@@ -137,35 +136,45 @@ class ContactUS extends Component {
                             </Button>
                         </Left>
                         <Body>
-                            <Title>Contact US</Title>
+                            <Title>CashBack</Title>
                         </Body>
                         <Right />
                     </Header>
 
-                    <Content style={{ marginTop: 150 }}>
-                        <Body>
-                            <Image source={AppIcon} style={{ height: 200, width: 200 }} />
-                            <Text
-                                style={{
-                                    fontWeight: 'bold', fontSize: 20, width: '100%'
-                                }}>
-                                Daily Sheet
-                           </Text>
-                            <View style={{ height: 20 }}></View>
-                            <Text
-                                style={{
-                                    fontWeight: 'normal', fontSize: 20, width: '100%'
-                                }}>
-                                vaghasiya907@gmail.com
-                           </Text>
-                            <Text
-                                style={{
-                                    fontWeight: 'normal', fontSize: 20, width: '100%'
-                                }}>
-                                Version 1.0
-                           </Text>
-                        </Body>
-                    </Content>
+                    <CardItem>
+                        <Left>
+                            <Button transparent >
+                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}> Total Cashback</Text>
+                            </Button>
+                        </Left>
+                        <Right>
+                            <Button transparent>
+                                <Icon active
+                                    type='MaterialCommunityIcons'
+                                    name="currency-inr"
+                                    style={{ color: 'black' }} />
+                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{this.state.Total}</Text>
+                            </Button>
+                        </Right>
+                    </CardItem>
+
+                    <ScrollView style={margin}>
+                        {this.renderCashbackList()}
+                    </ScrollView>
+                    <View style={{ width: 50, height: 50, position: 'absolute', right: 0, bottom: 20, justifyContent: 'center', alignItems: 'center' }}>
+                        <Fab
+                            active={this.state.active}
+                            direction="up"
+                            containerStyle={{}}
+                            style={{ backgroundColor: '#5067FF' }}
+                            position="bottomRight"
+                            onPress={() => Actions.createcashback()}>
+                            <Icon
+                                type='Entypo'
+                                name="plus" />
+                        </Fab>
+                    </View>
+
                 </Container>
             </Drawer>
         );
@@ -178,4 +187,4 @@ const styles = {
     }
 };
 
-export default ContactUS;
+export default Cashback;

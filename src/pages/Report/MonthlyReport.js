@@ -6,10 +6,10 @@ import {
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
-import { Spinner } from '../common/Spinner';
+import { Spinner } from '../../common/Spinner';
 
-import CardMonthlyReport from '../cards/CardMonthlyReport';
-import SideBar from '../Drawer/SideBar';
+import CardMonthlyReport from '../../cards/CardMonthlyReport';
+import SideBar from '../../Drawer/SideBar';
 class MonthlyReport extends Component {
 
     constructor(props) {

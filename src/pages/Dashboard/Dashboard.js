@@ -7,10 +7,10 @@ import {
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
-import { Spinner } from '../common/Spinner';
+import { Spinner } from '../../common/Spinner';
 
-import CardTransaction from '../cards/CardTransactionList';
-import SideBar from '../Drawer/SideBar';
+import CardTransaction from '../../cards/CardTransactionList';
+import SideBar from '../../Drawer/SideBar';
 class Dashboard extends Component {
 
     constructor(props) {

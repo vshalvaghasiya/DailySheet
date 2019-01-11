@@ -8,15 +8,15 @@ import {
 import ImagePicker from 'react-native-image-crop-picker';
 import Parse from 'parse/react-native';
 
-import { ALL_FIELDS_REQURED, TEXT_COLOR, BORDER_COLOR, ERROR_COLOR } from '../helper/Constant';
-import { Spinner } from '../common/Spinner';
+import { TEXT_COLOR, BORDER_COLOR, ERROR_COLOR } from '../../helper/Constant';
+import { Spinner } from '../../common/Spinner';
 
 const Options = [
     { text: 'Camera' },
     { text: 'Galary' },
     { text: 'Cancel' }
 ];
-class CreateCashBack extends Component {
+class EditTransaction extends Component {
 
     constructor(props) {
         super(props);
@@ -26,10 +26,12 @@ class CreateCashBack extends Component {
             Title: '',
             inputTitleError: false,
             Price: '',
+            OldPrice: '',
             inputPriceError: false,
             StoreName: '',
             inputStoreNameError: false,
             chosenDate: '',
+            selectedMonth: '',
             inputDateError: false,
             Description: '',
             inputDescriptionError: false,
@@ -37,14 +39,25 @@ class CreateCashBack extends Component {
             image: null
         };
         this.setDate = this.setDate.bind(this);
-        this.validation = this.validation.bind(this);
     }
 
     componentDidMount() {
+        let data = this.props.data;
+        var date = new Date(data.get('BillDate'));
+        this.setState({
+            Title: data.get('Title'),
+            Price: data.get('Price'),
+            OldPrice: data.get('Price'),
+            StoreName: data.get('StoreName'),
+            Description: data.get('Description'),
+            chosenDate: data.get('BillDate'),
+            image: data.get('BILL'),
+            selectedMonth: date.getMonth() + 1
+        });
     }
 
     setDate(newDate) {
-        this.setState({ chosenDate: newDate });
+        this.setState({ chosenDate: newDate.toString().substr(4, 12), selectedMonth: newDate.getMonth() + 1 });
     }
 
     navigate() {
@@ -52,92 +65,48 @@ class CreateCashBack extends Component {
     }
 
     transcationButtonClick() {
-        this.validation();
+        this.updateTransaction();
     }
 
-    validation() {
-        if (this.state.Title !== '' && this.state.Price && this.state.StoreName &&
-            this.state.Description !== '') {
-            this.setState({
-                inputTitleError: false,
-                inputPriceError: false,
-                inputStoreNameError: false,
-                inputDateError: false,
-                inputDescriptionError: false,
-                message: ''
-            });
-            this.addTransaction();
-        } else {
-            if (this.state.Title === '') {
-                this.setState({
-                    inputTitleError: true,
-                });
-            } else {
-                this.setState({
-                    inputTitleError: false,
-                });
-            }
-            if (this.state.Price === '') {
-                this.setState({
-                    inputPriceError: true,
-                });
-            } else {
-                this.setState({
-                    inputPriceError: false,
-                });
-            }
-            if (this.state.StoreName === '') {
-                this.setState({
-                    inputStoreNameError: true,
-                });
-            } else {
-                this.setState({
-                    inputStoreNameError: false,
-                });
-            }
-            if (this.state.chosenDate === '') {
-                this.setState({
-                    inputDateError: true,
-                });
-            } else {
-                this.setState({
-                    inputDateError: false,
-                });
-            }
-            if (this.state.Description === '') {
-                this.setState({
-                    inputDescriptionError: true,
-                });
-            } else {
-                this.setState({
-                    inputDescriptionError: false,
-                });
-            }
-            this.setState({
-                message: ALL_FIELDS_REQURED
-            });
-        }
-    }
-
-    addTransaction() {
+    updateTransaction() {
         this.setState({ loading: true });
-        const object = Parse.Object.extend("Cashback");
-        const objects = new object();
-    
-        objects.set("UserID", '1');
-        objects.set("Title", this.state.Title);
-        objects.set("Price", this.state.Price);
-        objects.set("StoreName", this.state.StoreName)
-        objects.set("CashbackDate", this.state.chosenDate.toString().substr(4, 12))
-        objects.set("Description", this.state.Description)
-        objects.save()
-            .then((result) => {
-                this.setState({ loading: false });
-                Actions.cashback();
+        let data = this.props.data;
+        const MyObject = Parse.Object.extend('DailyReport');
+        const query = new Parse.Query(MyObject);
+        query.get(data.id).then((object) => {
+            object.set("UserID", '1');
+            object.set("Title", this.state.Title);
+            object.set("Price", this.state.Price);
+            object.set("StoreName", this.state.StoreName)
+            object.set("BillDate", this.state.chosenDate.toString())
+            object.set("Description", this.state.Description)
+            object.save().then((response) => {
+                const obj = Parse.Object.extend('Monthly');
+                const query1 = new Parse.Query(obj);
+                query1.equalTo("ID", this.state.selectedMonth.toString());
+                query1.find().then((results) => {
+                    let total = Number(results[0].get('Total')) - Number(this.state.OldPrice) + Number(this.state.Price)
+                    const MyObject = Parse.Object.extend('Monthly');
+                    const query2 = new Parse.Query(MyObject);
+                    query2.get(results[0].id).then((object) => {
+                        object.set("Total", total.toString());
+                        object.save().then((response) => {
+                            this.setState({ loading: false });
+                            Actions.dashboard();
+                        }, (error) => {
+                            this.setState({ loading: false });
+                            Alert.alert('Failed!' + error.message);
+                        });
+                    });
+                }, (error) => {
+                    this.setState({ loading: false });
+                    Alert.alert('Failed!' + error.message);
+                });
             }, (error) => {
                 this.setState({ loading: false });
-                alert('Failed to create new object, with error code: ' + error.message);
+                alert('Failed!' + error.message);
             });
+        });
     }
 
     spinerRender() {
@@ -147,7 +116,7 @@ class CreateCashBack extends Component {
         return (
             <TouchableOpacity onPress={this.transcationButtonClick.bind(this)}>
                 <View style={styles.VIEW_Button}>
-                    <Text style={styles.TXT_Button} > ADD CASHBACK </Text>
+                    <Text style={styles.TXT_Button} > UPDATE TRANSCATION </Text>
                 </View>
             </TouchableOpacity>
         );
@@ -165,7 +134,7 @@ class CreateCashBack extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>Create Cashback</Title>
+                        <Title>Update Transcation</Title>
                     </Body>
                     <Right />
                 </Header>
@@ -184,6 +153,7 @@ class CreateCashBack extends Component {
                                     returnKeyType='next'
                                     onSubmitEditing={() => { this.Price._root.focus(); }}
                                     onChangeText={(value) => this.setState({ Title: value })}
+                                    value={this.state.Title}
                                     blurOnSubmit={false} />
                             </Item>
                             <View style={{ height: 20 }} />
@@ -199,6 +169,7 @@ class CreateCashBack extends Component {
                                     getRef={(input) => { this.Price = input; }}
                                     onSubmitEditing={() => { this.StoreName._root.focus(); }}
                                     onChangeText={(value) => this.setState({ Price: value })}
+                                    value={this.state.Price}
                                     blurOnSubmit={false} />
                             </Item>
                             <View style={{ height: 20 }} />
@@ -214,6 +185,7 @@ class CreateCashBack extends Component {
                                     getRef={(input) => { this.StoreName = input; }}
                                     onSubmitEditing={() => { this.firstname._root.focus(); }}
                                     onChangeText={(value) => this.setState({ StoreName: value })}
+                                    value={this.state.StoreName}
                                     blurOnSubmit={false} />
                             </Item>
                             <View style={{ height: 40 }} />
@@ -225,7 +197,7 @@ class CreateCashBack extends Component {
                                 modalTransparent={false}
                                 animationType={"fade"}
                                 androidMode={"default"}
-                                placeHolderText='Select date'
+                                placeHolderText={this.state.chosenDate.toString().substr(4, 12)}
                                 textStyle={{ color: "#232323" }}
                                 onChangeText={this.state.chosenDate.toString().substr(4, 12)}
                                 placeHolderTextStyle={{ color: "#232323" }}
@@ -236,15 +208,14 @@ class CreateCashBack extends Component {
 
                             <View style={{ height: 40 }} />
                             <Textarea rowSpan={5} bordered placeholder="Description"
-                                onChangeText={(value) => this.setState({ Description: value })} />
+                                onChangeText={(value) => this.setState({ Description: value })}
+                                value={this.state.Description}
+                            />
 
                             <View
                                 style={this.state.inputDescriptionError ? { width: '100%', borderBottomWidth: 1, borderBottomColor: ERROR_COLOR } : { width: '100%', borderBottomWidth: 1, borderBottomColor: 'lightgrey' }}>
                             </View>
-
                         </Form>
-
-                        <View style={{ height: 40 }} />
 
                         <View style={{ height: 20 }} />
                         <Text style={TXT_Message}>
@@ -297,4 +268,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default CreateCashBack;
+export default EditTransaction;
