@@ -32,7 +32,7 @@ class BorrowMoney extends Component {
         // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
         const NewsObject = Parse.Object.extend('Borrowing');
         const query = new Parse.Query(NewsObject);
-        query.addAscending('Date');
+        query.descending('Date');
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });
@@ -134,7 +134,7 @@ class BorrowMoney extends Component {
                     <CardItem>
                         <Left>
                             <Button transparent >
-                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}> Total Borrowing</Text>
+                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}> Total Borrow</Text>
                             </Button>
                         </Left>
                         <Right>

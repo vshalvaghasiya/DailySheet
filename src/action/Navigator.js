@@ -13,6 +13,8 @@ import BorrowedMoney from '../pages/BorrowedMoney/BorrowedMoney'
 import Cashback from '../pages/Cashback/Cashback';
 import CreateCashBack from '../pages/Cashback/CreateCashBack';
 import CreateBorrowMoney from '../pages/BorrowMoney/CreateBorrowMoney';
+import CreateBorrowedMoney from '../pages/BorrowedMoney/CreateBorrowedMoney';
+
 import ContactUS from '../pages/ContactUS/ContactUS';
 const Navigator = (props) => {
     return (
@@ -83,6 +85,10 @@ const Navigator = (props) => {
                 <Scene
                     key="BorrowedMoney"
                     component={BorrowedMoney} hideNavBar={'true'}
+                />
+                <Scene
+                    key="CreateBorrowedMoney"
+                    component={CreateBorrowedMoney} hideNavBar={'true'}
                 />
                 
                 <Scene

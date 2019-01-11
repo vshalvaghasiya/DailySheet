@@ -8,7 +8,7 @@ import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
 import { Spinner } from '../../common/Spinner';
 
-import CardCashbackList from '../../cards/CardCashbackList';
+import CardMoney from '../../cards/CardMoney';
 import SideBar from '../../Drawer/SideBar';
 class BorrowedMoney extends Component {
 
@@ -20,7 +20,6 @@ class BorrowedMoney extends Component {
             loading: false,
             Total: 0,
         };
-        this._ViewPDF = this._ViewPDF.bind(this);
         this.deleteRecord = this.deleteRecord.bind(this);
     }
 
@@ -31,15 +30,15 @@ class BorrowedMoney extends Component {
     GetTransaction() {
         this.setState({ loading: true });
         // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
-        const NewsObject = Parse.Object.extend('Cashback');
+        const NewsObject = Parse.Object.extend('BorrowedMoney');
         const query = new Parse.Query(NewsObject);
-        query.addAscending('CashbackDate');
+        query.descending('Date');
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });
             this.setState({ data: results });
             var msgTotal = results.reduce(function (prev, cur) {
-                return Number(prev) + Number(cur.get('Price'));
+                return Number(prev) + Number(cur.get('Money'));
             }, 0);
             this.setState({ Total: msgTotal });
         }, (error) => {
@@ -55,14 +54,6 @@ class BorrowedMoney extends Component {
         this.drawer._root.open()
     };
 
-    _ViewPDF(PDF) {
-        if (!!PDF) {
-            Actions.viewPDF({ PDF: PDF._url });
-        } else {
-            Alert.alert('Message..!', 'Bill not found');
-        }
-    }
-
     deleteRecord(id) {
         Alert.alert(
             'Are you sure delete?',
@@ -77,7 +68,7 @@ class BorrowedMoney extends Component {
 
     actionSheet(id) {
         this.setState({ loading: true });
-        const MyObject = Parse.Object.extend('Cashback');
+        const MyObject = Parse.Object.extend('BorrowedMoney');
         const query = new Parse.Query(MyObject);
         query.get(id).then((object) => {
             object.destroy().then((response) => {
@@ -101,11 +92,10 @@ class BorrowedMoney extends Component {
         if (this.state.data && this.state.data.length > 0) {
             console.log(this.state.data);
             return this.state.data.map((item, index) =>
-                <CardCashbackList
+                <CardMoney
                     key={`index-${index}`}
                     items={item}
                     index={index}
-                    _ViewPDF={this._ViewPDF}
                     deleteRecord={this.deleteRecord}
                 />
             );
@@ -136,7 +126,7 @@ class BorrowedMoney extends Component {
                             </Button>
                         </Left>
                         <Body>
-                            <Title>Borrowed</Title>
+                            <Title>Borrowed Money</Title>
                         </Body>
                         <Right />
                     </Header>
@@ -168,7 +158,7 @@ class BorrowedMoney extends Component {
                             containerStyle={{}}
                             style={{ backgroundColor: '#5067FF' }}
                             position="bottomRight"
-                            onPress={() => Actions.createcashback()}>
+                            onPress={() => Actions.CreateBorrowedMoney()}>
                             <Icon
                                 type='Entypo'
                                 name="plus" />

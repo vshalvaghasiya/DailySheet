@@ -38,7 +38,7 @@ class Dashboard extends Component {
         this.setState({ loading: true });
         const MyObject = Parse.Object.extend('DailyReport');
         const query = new Parse.Query(MyObject);
-        query.addAscending('BillDate');
+        query.descending('BillDate');
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });

@@ -33,7 +33,7 @@ class Cashback extends Component {
         // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
         const NewsObject = Parse.Object.extend('Cashback');
         const query = new Parse.Query(NewsObject);
-        query.addAscending('CashbackDate');
+        query.descending('CashbackDate');
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });

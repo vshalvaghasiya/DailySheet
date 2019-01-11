@@ -145,7 +145,7 @@ class CreateBorrowMoney extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>Create Money</Title>
+                        <Title>Borrow Money</Title>
                     </Body>
                     <Right />
                 </Header>
