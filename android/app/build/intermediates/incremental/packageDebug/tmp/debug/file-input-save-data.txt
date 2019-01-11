@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Jan 10 11:40:52 IST 2019
+#Fri Jan 11 12:19:01 IST 2019
 5.base=/Users/admin/Desktop/DailySheet/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
 42.base=/Users/admin/Desktop/DailySheet/android/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out
 22.path=fonts/FontAwesome5_Regular.ttf

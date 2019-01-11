@@ -7,7 +7,6 @@ import {
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
-import Moment from 'moment';
 import { Spinner } from '../common/Spinner';
 
 import CardTransaction from '../cards/CardTransactionList';

@@ -8,10 +8,12 @@ import YearlyReport from '../pages/YearlyReport';
 import CreateTransaction from '../pages/CreateTransaction';
 import EditTransaction from '../pages/EditTransaction';
 import MonthlyViewRecord from '../pages/MonthlyViewRecord'
-
+import BorrowMoney from '../pages/BorrowMoney'
+import BorrowedMoney from '../pages/BorrowedMoney'
 import Cashback from '../pages/Cashback';
 import CreateCashBack from '../pages/CreateCashBack';
-
+import CreateBorrowMoney from '../pages/CreateBorrowMoney';
+import ContactUS from '../pages/ContactUS';
 const Navigator = (props) => {
     return (
         <Router
@@ -69,6 +71,25 @@ const Navigator = (props) => {
                     key="monthlyviewrecord"
                     component={MonthlyViewRecord} hideNavBar={'true'}
                 />
+
+                <Scene
+                    key="BorrowMoney"
+                    component={BorrowMoney} hideNavBar={'true'}
+                />
+                <Scene
+                    key="CreateBorrowMoney"
+                    component={CreateBorrowMoney} hideNavBar={'true'}
+                />
+                <Scene
+                    key="BorrowedMoney"
+                    component={BorrowedMoney} hideNavBar={'true'}
+                />
+                
+                <Scene
+                    key="ContactUS"
+                    component={ContactUS} hideNavBar={'true'}
+                />
+
             </Scene>
         </Router>
     );

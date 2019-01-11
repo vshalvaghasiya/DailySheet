@@ -184,12 +184,12 @@
         "source": "/Users/admin/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/505c0bbf70d9e526b559465285eb49c7/res/drawable-xxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "/Users/admin/Desktop/DailySheet/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
-        "source": "/Users/admin/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/505c0bbf70d9e526b559465285eb49c7/res/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "/Users/admin/Desktop/DailySheet/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
         "source": "/Users/admin/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/505c0bbf70d9e526b559465285eb49c7/res/drawable-mdpi-v4/abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/admin/Desktop/DailySheet/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
+        "source": "/Users/admin/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/505c0bbf70d9e526b559465285eb49c7/res/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "/Users/admin/Desktop/DailySheet/android/app/build/intermediates/res/merged/debug/layout_abc_tooltip.xml.flat",
@@ -1130,6 +1130,10 @@
     {
         "merged": "/Users/admin/Desktop/DailySheet/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "/Users/admin/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/f44e2d2b5fdc5016f8fb23e04ac0756c/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/Users/admin/Desktop/DailySheet/android/app/build/intermediates/res/merged/debug/drawable-mdpi_assets_image_no_internet.png.flat",
+        "source": "/Users/admin/Desktop/DailySheet/android/app/src/main/res/drawable-mdpi/assets_image_no_internet.png"
     },
     {
         "merged": "/Users/admin/Desktop/DailySheet/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",

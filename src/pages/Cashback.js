@@ -6,7 +6,6 @@ import {
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Parse from 'parse/react-native';
-import Moment from 'moment';
 import { Spinner } from '../common/Spinner';
 
 import CardCashbackList from '../cards/CardCashbackList';
@@ -34,7 +33,7 @@ class Cashback extends Component {
         // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
         const NewsObject = Parse.Object.extend('Cashback');
         const query = new Parse.Query(NewsObject);
-        query.descending('CashbackDate');
+        query.addAscending('CashbackDate');
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });
@@ -65,6 +64,18 @@ class Cashback extends Component {
     }
 
     deleteRecord(id) {
+        Alert.alert(
+            'Are you sure delete?',
+            '',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                { text: 'OK', onPress: () => this.actionSheet(id) },
+            ],
+            { cancelable: false }
+        )
+    }
+
+    actionSheet(id) {
         this.setState({ loading: true });
         const MyObject = Parse.Object.extend('Cashback');
         const query = new Parse.Query(MyObject);
@@ -133,7 +144,7 @@ class Cashback extends Component {
                     <CardItem>
                         <Left>
                             <Button transparent >
-                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}> Total Transcation</Text>
+                                <Text style={{ fontWeight: 'bold', fontSize: 20 }}> Total Cashback</Text>
                             </Button>
                         </Left>
                         <Right>

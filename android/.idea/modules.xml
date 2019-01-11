@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DailySheet.iml" filepath="$PROJECT_DIR$/DailySheet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Daily Sheet.iml" filepath="$PROJECT_DIR$/Daily Sheet.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-fetch-blob/android/react-native-fetch-blob.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-fetch-blob/android/react-native-fetch-blob.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-image-crop-picker/android/react-native-image-crop-picker.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-image-crop-picker/android/react-native-image-crop-picker.iml" />

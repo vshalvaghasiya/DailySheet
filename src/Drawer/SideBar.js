@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, View, ImageBackground, Image } from 'react-native';
 import { Container, Header, Content, Text, List, Button, Body, Title, Left, Right, ListItem } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-const routes = ['Dashboard', 'Cashback', 'Monthly Report', 'Yearly Report', 'Contact Us'];
+const routes = ['Dashboard', 'Cashback', 'Monthly Report', 'Borrow Money', 'Borrowed Money', 'Contact Us']; 
 class SideBar extends Component {
 
     constructor(props) {
@@ -26,8 +26,14 @@ class SideBar extends Component {
             case 'Yearly Report':
                 Actions.yearlyreport();
                 break;
+            case 'Borrow Money':
+                Actions.BorrowMoney();
+                break;
+            case 'Borrowed Money':
+                Actions.BorrowedMoney();
+                break;
             case 'Contact Us':
-                alert(data);
+                Actions.ContactUS();
                 break;
             default:
                 break;
@@ -43,7 +49,7 @@ class SideBar extends Component {
 
                     </Left>
                     <Body>
-                    <Title>Daaily Sheet</Title>
+                        <Title>Daaily Sheet</Title>
                     </Body>
                     <Right />
                 </Header>
