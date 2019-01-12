@@ -63,7 +63,6 @@ class CreateTransaction extends Component {
     }
 
     validation() {
-        alert(this.state.selected);
         if (this.state.Title !== '' && this.state.Price && this.state.StoreName &&
             this.state.Description !== '' && this.state.selected != undefined) {
             this.setState({
