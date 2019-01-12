@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, TouchableOpacity, ScrollView, View } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, ScrollView, View, AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
     Container, Header, Title, Button, Body, Icon, Left, Right,
@@ -21,6 +21,7 @@ class CreateCashBack extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            UserID: '',
             message: '',
             loading: false,
             Title: '',
@@ -40,8 +41,11 @@ class CreateCashBack extends Component {
         this.validation = this.validation.bind(this);
     }
 
-    componentDidMount() {
-    }
+    componentWillMount() {
+        AsyncStorage.getItem('userID').then((value) => {
+            this.setState({ UserID: value });
+        }).done();
+      }
 
     setDate(newDate) {
         this.setState({ chosenDate: newDate });
@@ -124,7 +128,7 @@ class CreateCashBack extends Component {
         const object = Parse.Object.extend("Cashback");
         const objects = new object();
     
-        objects.set("UserID", '1');
+        objects.set("UserID", this.state.UserID);
         objects.set("Title", this.state.Title);
         objects.set("Price", this.state.Price);
         objects.set("StoreName", this.state.StoreName)

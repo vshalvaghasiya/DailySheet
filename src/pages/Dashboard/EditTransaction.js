@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, TouchableOpacity, ScrollView, View } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, ScrollView, View, AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
     Container, Header, Title, Button, Body, Icon, Left, Right,
@@ -21,6 +21,7 @@ class EditTransaction extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            UserID: '',
             message: '',
             loading: false,
             Title: '',
@@ -56,6 +57,12 @@ class EditTransaction extends Component {
         });
     }
 
+    componentWillMount() {
+        AsyncStorage.getItem('userID').then((value) => {
+            this.setState({ UserID: value });
+        }).done();
+      }
+
     setDate(newDate) {
         this.setState({ chosenDate: newDate.toString().substr(4, 12), selectedMonth: newDate.getMonth() + 1 });
     }
@@ -74,7 +81,7 @@ class EditTransaction extends Component {
         const MyObject = Parse.Object.extend('DailyReport');
         const query = new Parse.Query(MyObject);
         query.get(data.id).then((object) => {
-            object.set("UserID", '1');
+            object.set("UserID", this.state.UserID);
             object.set("Title", this.state.Title);
             object.set("Price", this.state.Price);
             object.set("StoreName", this.state.StoreName)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, TouchableOpacity, ScrollView, View, Alert } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, ScrollView, View, Alert, AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
     Container, Header, Title, Button, Body, Icon, Left, Right,
@@ -21,6 +21,7 @@ class CreateTransaction extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            UserID: '',
             message: '',
             loading: false,
             Title: '',
@@ -36,15 +37,18 @@ class CreateTransaction extends Component {
             inputDescriptionError: false,
             ImageSource: null,
             image: null,
-            selected: undefined,
+            selected: 'Other',
             inputSelectedError: false,
         };
         this.setDate = this.setDate.bind(this);
         this.validation = this.validation.bind(this);
     }
 
-    componentDidMount() {
-    }
+    componentWillMount() {
+        AsyncStorage.getItem('userID').then((value) => {
+            this.setState({ UserID: value });
+        }).done();
+      }
 
     setDate(newDate) {
         this.setState({ chosenDate: newDate, selectedMonth: newDate.getMonth() + 1 });
@@ -59,6 +63,7 @@ class CreateTransaction extends Component {
     }
 
     validation() {
+        alert(this.state.selected);
         if (this.state.Title !== '' && this.state.Price && this.state.StoreName &&
             this.state.Description !== '' && this.state.selected != undefined) {
             this.setState({
@@ -134,7 +139,8 @@ class CreateTransaction extends Component {
 
     onValueChange(value) {
         this.setState({
-            selected: value
+            selected: value,
+            inputSelectedError: false
         });
     }
 
@@ -147,7 +153,7 @@ class CreateTransaction extends Component {
             var base64 = this.state.image.uri;
             file = new Parse.File("bill", { base64: base64 });
         }
-        objects.set("UserID", '1');
+        objects.set("UserID", this.state.UserID);
         objects.set("Title", this.state.Title);
         objects.set("Price", this.state.Price);
         objects.set("StoreName", this.state.StoreName)

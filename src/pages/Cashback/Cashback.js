@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, View, ScrollView, Text, Alert } from 'react-native';
+import { Platform, View, ScrollView, Text, Alert, AsyncStorage } from 'react-native';
 import {
     Container, Header, Title,
     Drawer, Button, Fab, Body, Icon, Left, Right, CardItem
@@ -15,6 +15,7 @@ class Cashback extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            UserID: '',
             active: false,
             data: [],
             loading: false,
@@ -24,15 +25,19 @@ class Cashback extends Component {
         this.deleteRecord = this.deleteRecord.bind(this);
     }
 
-    componentDidMount() {
-        this.GetTransaction();
-    }
+    componentWillMount() {
+        AsyncStorage.getItem('userID').then((value) => {
+            this.setState({ UserID: value });
+            this.GetTransaction();
+        }).done();
+      }
 
     GetTransaction() {
         this.setState({ loading: true });
         // let curruntDate = Moment(Date()).format('DD-MMM-YYYY')
         const NewsObject = Parse.Object.extend('Cashback');
         const query = new Parse.Query(NewsObject);
+        query.equalTo("UserID", this.state.UserID);
         query.descending('CashbackDate');
         query.limit = 1000;
         query.find().then((results) => {

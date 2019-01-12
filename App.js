@@ -13,7 +13,7 @@ import Parse from 'parse/react-native';
 import { Spinner } from './src/common/Spinner';
 
 import Navigator from './src/action/Navigator';
-import { APPID, JavaScriptKey } from './src/helper/Constant';
+import { APPID, JavaScriptKey, IS_LOGIN } from './src/helper/Constant';
 import NoInternet from './src/helper/NoInternet';
 export default class App extends Component {
 
@@ -21,6 +21,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       loading: false,
+      isLogin: false,
       isConnected: true,
       appState: AppState.currentState,
       fromLink: false,
@@ -34,6 +35,16 @@ export default class App extends Component {
 
     NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange);
     AppState.addEventListener('change', this._handleAppStateChange);
+  }
+
+  componentDidMount() {
+    AsyncStorage.getItem(IS_LOGIN).then((value) => {
+      if (value == 'true') {
+        this.setState({ loading: false, isLogin: true });
+      } else {
+        this.setState({ loading: false, isLogin: false });
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -66,7 +77,7 @@ export default class App extends Component {
       }
       return (
         <View style={{ flex: 1 }}>
-          <Navigator />
+          <Navigator isLogin={this.state.isLogin} />
         </View>
       );
     }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Platform, View, ImageBackground, Image } from 'react-native';
+import { Platform, View, ImageBackground, AsyncStorage } from 'react-native';
 import { Container, Header, Content, Text, List, Button, Body, Title, Left, Right, ListItem } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-const routes = ['Dashboard', 'Cashback', 'Monthly Report', 'Borrow Money', 'Borrowed Money', 'Contact Us']; 
+import { IS_LOGIN } from '../helper/Constant';
+
+const routes = ['Dashboard', 'Cashback', 'Monthly Report', 'Borrow Money', 'Borrowed Money', 'Contact Us', 'LogOut'];
 class SideBar extends Component {
 
     constructor(props) {
@@ -35,6 +37,12 @@ class SideBar extends Component {
             case 'Contact Us':
                 Actions.ContactUS();
                 break;
+            case 'LogOut':
+                AsyncStorage.setItem(IS_LOGIN, JSON.stringify(false));
+                AsyncStorage.setItem('userID', '');
+                Actions.Login();
+                break;
+
             default:
                 break;
         }

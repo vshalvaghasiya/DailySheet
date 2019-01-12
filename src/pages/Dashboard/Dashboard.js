@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, View, ScrollView, Text, Alert } from 'react-native';
+import { Platform, View, ScrollView, Text, Alert, AsyncStorage } from 'react-native';
 import {
     Container, Header, Title,
     Drawer, Button, Fab, Body, Icon, Left, Right,
@@ -16,6 +16,7 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            UserID: '',
             active: false,
             data: [],
             loading: false,
@@ -26,9 +27,12 @@ class Dashboard extends Component {
         this.deleteRecord = this.deleteRecord.bind(this);
     }
 
-    componentDidMount() {
-        this.GetTransaction();
-    }
+    componentWillMount() {
+        AsyncStorage.getItem('userID').then((value) => {
+            this.setState({ UserID: value });
+            this.GetTransaction();
+        }).done();
+      }
 
     getLstDayOfMonFnc(date) {
         return new Date(date.getDate(), date.getMonth(), 0).getDate()
@@ -39,6 +43,7 @@ class Dashboard extends Component {
         const MyObject = Parse.Object.extend('DailyReport');
         const query = new Parse.Query(MyObject);
         query.descending('BillDate');
+        query.equalTo("UserID", this.state.UserID);
         query.limit = 1000;
         query.find().then((results) => {
             this.setState({ loading: false });

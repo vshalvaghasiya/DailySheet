@@ -9,3 +9,5 @@ export const ERROR_COLOR = '#FF0000';
 
 export const imageNOInternet = require('../../assets/image/no_internet.png');
 export const AppIcon = require('../../assets/image/icon.png');
+
+export const IS_LOGIN = 'Sheet_isLogin';

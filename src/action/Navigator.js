@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
+import Login from '../pages/Login/Login';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import ViewPDF from '../pages/Dashboard/ViewPDF';
 import MonthlyReport from '../pages/Report/MonthlyReport';
@@ -33,11 +34,17 @@ const Navigator = (props) => {
             }}
         >
             <Scene key="root">
-
+                <Scene
+                    type='reset'
+                    key="Login"
+                    component={Login} hideNavBar={'true'}
+                    initial={!props.isLogin}
+                />
                 <Scene
                     type='reset'
                     key="dashboard"
                     component={Dashboard} hideNavBar={'true'}
+                    initial={props.isLogin}
                 />
                 <Scene
                     key="cashback"
@@ -90,7 +97,7 @@ const Navigator = (props) => {
                     key="CreateBorrowedMoney"
                     component={CreateBorrowedMoney} hideNavBar={'true'}
                 />
-                
+
                 <Scene
                     key="ContactUS"
                     component={ContactUS} hideNavBar={'true'}
