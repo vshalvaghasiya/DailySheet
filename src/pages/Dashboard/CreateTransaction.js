@@ -48,7 +48,7 @@ class CreateTransaction extends Component {
         AsyncStorage.getItem('userID').then((value) => {
             this.setState({ UserID: value });
         }).done();
-      }
+    }
 
     setDate(newDate) {
         this.setState({ chosenDate: newDate, selectedMonth: newDate.getMonth() + 1 });
@@ -345,6 +345,7 @@ class CreateTransaction extends Component {
                                     <Picker.Item label="Other" value="Other" />
                                     <Picker.Item label="Shopping" value="Shopping" />
                                     <Picker.Item label="Petrol" value="Petrol" />
+                                    <Picker.Item label="Grocery" value="Grocery" />
                                     <Picker.Item label="Bill" value="Bill" />
                                     <Picker.Item label="Recharge" value="Recharge" />
                                     <Picker.Item label="Electric" value="Electric" />

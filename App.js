@@ -90,7 +90,7 @@ export default class App extends Component {
     return (
       <Root style={styles.container}>
         <StatusBar
-          backgroundColor="#ffffff"
+          backgroundColor="#232323"
           barStyle="dark-content"
         />
         {this.spinerRender()}
